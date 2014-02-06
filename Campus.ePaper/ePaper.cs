@@ -183,6 +183,10 @@ namespace Campus.ePaper
                     {
                         each.Student = CheckDic[each.PrefixName];
                     }
+                    else
+                    {
+                        each.Status = "(查無學生)";
+                    }
                 }
                 #endregion
             }

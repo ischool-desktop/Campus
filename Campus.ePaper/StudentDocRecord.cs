@@ -69,20 +69,5 @@ namespace Campus.ePaper
         /// 目前狀態
         /// </summary>
         public string Status { get; set; }
-
-        /// <summary>
-        /// 報表頁數
-        /// </summary>
-        public string PageCount
-        {
-            get
-            {
-                if (Doc != null)
-                    return Doc.Sections.Count.ToString();
-                else
-                    return "0";
-            }
-        }
-
     }
 }

@@ -108,27 +108,55 @@ namespace Campus.ePaper
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             paperForStudent = new SmartSchool.ePaper.ElectronicPaper(_DocName, intSchoolYear.Value.ToString(), intSemester.Value.ToString(), SmartSchool.ePaper.ViewerType.Student);
+            int UpdateCount = 0;
             foreach (StudentDocRecord sr in SectionList)
             {
-                if (sr.Doc != null)
+                if (sr.Status == "(正常)")
                 {
-                    //傳參數給PaperItem
-                    //格式 / 內容 / 對象的系統編號
-                    MemoryStream stream = new MemoryStream();
-                    sr.Doc.Save(stream, SaveFormat.Doc);
-                    paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, sr.Student.StudentID));
+                    if (sr.Doc != null)
+                    {
+                        //傳參數給PaperItem
+                        //格式 / 內容 / 對象的系統編號
+                        MemoryStream stream = new MemoryStream();
+                        sr.Doc.Save(stream, SaveFormat.Doc);
+                        paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, sr.Student.StudentID));
+                        UpdateCount++;
+                    }
                 }
             }
 
-            //開始上傳
-            SmartSchool.ePaper.DispatcherProvider.Dispatch(paperForStudent);
+            MsgBox.Show("上傳共" + UpdateCount + "筆電子報表!!");
 
+            if (UpdateCount > 0)
+            {
+                SmartSchool.ePaper.DispatcherProvider.Dispatch(paperForStudent);
+                this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            }
+            else
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.No;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            MsgBox.Show("已取消電子報表上傳!!");
-            this.Close();
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+        }
+
+        private void linkSaveFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                foreach (StudentDocRecord record in SectionList)
+                {
+                    if (record.Student != null)
+                    {
+                        record.Doc.Save(fbd.SelectedPath + "\\" + record.Student.Student_Number + "_" + record.StudentName + ".doc");
+                    }
+                }
+                MessageBox.Show("已儲存!!");
+            }
         }
     }
 }

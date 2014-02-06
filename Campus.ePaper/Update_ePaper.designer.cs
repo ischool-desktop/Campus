@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.colPage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +41,8 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.intSchoolYear = new DevComponents.Editors.IntegerInput();
             this.intSemester = new DevComponents.Editors.IntegerInput();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.linkSaveFile = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).BeginInit();
@@ -56,35 +56,27 @@
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colPage,
             this.colStudentNumber,
             this.colClass,
             this.colSeatNo,
             this.colStudentID,
             this.colStatus});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(584, 350);
+            this.dataGridViewX1.Size = new System.Drawing.Size(521, 350);
             this.dataGridViewX1.TabIndex = 0;
-            // 
-            // colPage
-            // 
-            this.colPage.DataPropertyName = "PageCount";
-            this.colPage.HeaderText = "頁數";
-            this.colPage.Name = "colPage";
-            this.colPage.Width = 65;
             // 
             // colStudentNumber
             // 
@@ -122,7 +114,7 @@
             this.btnUpdate.AutoSize = true;
             this.btnUpdate.BackColor = System.Drawing.Color.Transparent;
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUpdate.Location = new System.Drawing.Point(441, 398);
+            this.btnUpdate.Location = new System.Drawing.Point(377, 399);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 25);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -137,12 +129,12 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(522, 398);
+            this.btnExit.Location = new System.Drawing.Point(458, 399);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnExit.TabIndex = 2;
-            this.btnExit.Text = "取消";
+            this.btnExit.Text = "離開";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // labelX1
@@ -183,7 +175,9 @@
             // 
             this.intSchoolYear.BackgroundStyle.Class = "DateTimeInputBackground";
             this.intSchoolYear.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.intSchoolYear.ButtonFreeText.Checked = true;
             this.intSchoolYear.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.intSchoolYear.FreeTextEntryMode = true;
             this.intSchoolYear.Location = new System.Drawing.Point(63, 11);
             this.intSchoolYear.MaxValue = 999;
             this.intSchoolYear.MinValue = 90;
@@ -201,7 +195,9 @@
             // 
             this.intSemester.BackgroundStyle.Class = "DateTimeInputBackground";
             this.intSemester.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.intSemester.ButtonFreeText.Checked = true;
             this.intSemester.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.intSemester.FreeTextEntryMode = true;
             this.intSemester.Location = new System.Drawing.Point(203, 11);
             this.intSemester.MaxValue = 2;
             this.intSemester.MinValue = 1;
@@ -211,26 +207,28 @@
             this.intSemester.TabIndex = 6;
             this.intSemester.Value = 1;
             // 
-            // buttonX1
+            // folderBrowserDialog1
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.AutoSize = true;
-            this.buttonX1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(13, 398);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 25);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 7;
-            this.buttonX1.Text = "另存新檔";
-            this.buttonX1.Tooltip = "將檔案儲存至本機";
+            this.folderBrowserDialog1.Description = "選擇儲存資料夾";
+            // 
+            // linkSaveFile
+            // 
+            this.linkSaveFile.AutoSize = true;
+            this.linkSaveFile.BackColor = System.Drawing.Color.Transparent;
+            this.linkSaveFile.Location = new System.Drawing.Point(12, 406);
+            this.linkSaveFile.Name = "linkSaveFile";
+            this.linkSaveFile.Size = new System.Drawing.Size(60, 17);
+            this.linkSaveFile.TabIndex = 7;
+            this.linkSaveFile.TabStop = true;
+            this.linkSaveFile.Text = "另存新檔";
+            this.linkSaveFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSaveFile_LinkClicked);
             // 
             // Update_ePaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 431);
-            this.Controls.Add(this.buttonX1);
+            this.ClientSize = new System.Drawing.Size(545, 431);
+            this.Controls.Add(this.linkSaveFile);
             this.Controls.Add(this.intSemester);
             this.Controls.Add(this.intSchoolYear);
             this.Controls.Add(this.labelX2);
@@ -253,16 +251,16 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.ButtonX btnUpdate;
         private DevComponents.DotNetBar.ButtonX btnExit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPage;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.Editors.IntegerInput intSchoolYear;
+        private DevComponents.Editors.IntegerInput intSemester;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStudentNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSeatNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStudentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.Editors.IntegerInput intSchoolYear;
-        private DevComponents.Editors.IntegerInput intSemester;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.LinkLabel linkSaveFile;
     }
 }
