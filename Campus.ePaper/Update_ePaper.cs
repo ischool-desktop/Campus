@@ -107,6 +107,13 @@ namespace Campus.ePaper
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("上傳學生電子報表：");
+            sb.AppendLine("報表名稱「" + _DocName + "」");
+            sb.AppendLine("學年度「" + intSchoolYear.Value.ToString() + "」");
+            sb.AppendLine("學期「" + intSemester.Value.ToString() + "」");
+            sb.AppendLine("");
+            sb.AppendLine("學生清單：");
             paperForStudent = new SmartSchool.ePaper.ElectronicPaper(_DocName, intSchoolYear.Value.ToString(), intSemester.Value.ToString(), SmartSchool.ePaper.ViewerType.Student);
             int UpdateCount = 0;
             foreach (StudentDocRecord sr in SectionList)
@@ -117,6 +124,7 @@ namespace Campus.ePaper
                     {
                         //傳參數給PaperItem
                         //格式 / 內容 / 對象的系統編號
+                        sb.AppendLine(string.Format("班級「{1}」座號「{2}」姓名「{0}」學號「{3}」", sr.StudentName, sr.StudentClass, sr.StudentSeatNo, sr.Student.Student_Number));
                         MemoryStream stream = new MemoryStream();
                         sr.Doc.Save(stream, SaveFormat.Doc);
                         paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, sr.Student.StudentID));
@@ -125,11 +133,12 @@ namespace Campus.ePaper
                 }
             }
 
-            MsgBox.Show("上傳共" + UpdateCount + "筆電子報表!!");
+            MsgBox.Show("上傳「" + UpdateCount + "」筆電子報表!!");
 
             if (UpdateCount > 0)
             {
                 SmartSchool.ePaper.DispatcherProvider.Dispatch(paperForStudent);
+                FISCA.LogAgent.ApplicationLog.Log("電子報表", "上傳", sb.ToString());
                 this.DialogResult = System.Windows.Forms.DialogResult.Yes;
             }
             else

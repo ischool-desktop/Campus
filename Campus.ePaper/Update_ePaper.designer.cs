@@ -28,13 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -43,6 +38,11 @@
             this.intSemester = new DevComponents.Editors.IntegerInput();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.linkSaveFile = new System.Windows.Forms.LinkLabel();
+            this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).BeginInit();
@@ -61,52 +61,22 @@
             this.colSeatNo,
             this.colStudentID,
             this.colStatus});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
-            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(521, 350);
             this.dataGridViewX1.TabIndex = 0;
-            // 
-            // colStudentNumber
-            // 
-            this.colStudentNumber.DataPropertyName = "PrefixName";
-            this.colStudentNumber.HeaderText = "比對名稱";
-            this.colStudentNumber.Name = "colStudentNumber";
-            // 
-            // colClass
-            // 
-            this.colClass.DataPropertyName = "StudentClass";
-            this.colClass.HeaderText = "班級";
-            this.colClass.Name = "colClass";
-            // 
-            // colSeatNo
-            // 
-            this.colSeatNo.DataPropertyName = "StudentSeatNo";
-            this.colSeatNo.HeaderText = "座號";
-            this.colSeatNo.Name = "colSeatNo";
-            // 
-            // colStudentID
-            // 
-            this.colStudentID.DataPropertyName = "StudentName";
-            this.colStudentID.HeaderText = "姓名";
-            this.colStudentID.Name = "colStudentID";
-            // 
-            // colStatus
-            // 
-            this.colStatus.DataPropertyName = "Status";
-            this.colStatus.HeaderText = "狀態";
-            this.colStatus.Name = "colStatus";
             // 
             // btnUpdate
             // 
@@ -223,6 +193,41 @@
             this.linkSaveFile.Text = "另存新檔";
             this.linkSaveFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSaveFile_LinkClicked);
             // 
+            // colStudentNumber
+            // 
+            this.colStudentNumber.DataPropertyName = "PrefixName";
+            this.colStudentNumber.HeaderText = "比對名稱";
+            this.colStudentNumber.Name = "colStudentNumber";
+            this.colStudentNumber.ReadOnly = true;
+            // 
+            // colClass
+            // 
+            this.colClass.DataPropertyName = "StudentClass";
+            this.colClass.HeaderText = "班級";
+            this.colClass.Name = "colClass";
+            this.colClass.ReadOnly = true;
+            // 
+            // colSeatNo
+            // 
+            this.colSeatNo.DataPropertyName = "StudentSeatNo";
+            this.colSeatNo.HeaderText = "座號";
+            this.colSeatNo.Name = "colSeatNo";
+            this.colSeatNo.ReadOnly = true;
+            // 
+            // colStudentID
+            // 
+            this.colStudentID.DataPropertyName = "StudentName";
+            this.colStudentID.HeaderText = "姓名";
+            this.colStudentID.Name = "colStudentID";
+            this.colStudentID.ReadOnly = true;
+            // 
+            // colStatus
+            // 
+            this.colStatus.DataPropertyName = "Status";
+            this.colStatus.HeaderText = "狀態";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            // 
             // Update_ePaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -255,12 +260,12 @@
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.Editors.IntegerInput intSchoolYear;
         private DevComponents.Editors.IntegerInput intSemester;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.LinkLabel linkSaveFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStudentNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSeatNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStudentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.LinkLabel linkSaveFile;
     }
 }
