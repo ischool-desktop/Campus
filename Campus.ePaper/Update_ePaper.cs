@@ -21,16 +21,21 @@ namespace Campus.ePaper
         /// </summary>
         SmartSchool.ePaper.ElectronicPaper paperForStudent { get; set; }
 
-        Document _doc { get; set; }
+        List<Document> _DocList { get; set; }
 
         string _DocName { get; set; }
 
         List<StudentDocRecord> SectionList { get; set; }
 
+        int UpdateCount = 0;
+
+        StringBuilder sb { get; set; }
         /// <summary>
         /// 開始針對載入之檔案,進行頁面分析
         /// </summary>
         BackgroundWorker BGW { get; set; }
+
+        BackgroundWorker BGWUpdate { get; set; }
 
         /// <summary>
         /// 開始進行學生電子報表分析與上傳
@@ -40,11 +45,11 @@ namespace Campus.ePaper
         /// <param name="doc">電子報表</param>
         /// <param name="Name">報表名稱</param>
         /// <param name="pf">前綴詞:學號/身分證號/系統編號</param>
-        public Update_ePaper(Document doc, string Name, PrefixStudent pf)
+        public Update_ePaper(List<Document> DocList, string Name, PrefixStudent pf)
         {
             InitializeComponent();
 
-            _doc = doc;
+            _DocList = DocList;
             this.Text = "開始報表分析... - " + Name;
             _DocName = Name;
             colStudentNumber.HeaderText = pf.ToString();
@@ -55,6 +60,14 @@ namespace Campus.ePaper
             BGW = new BackgroundWorker();
             BGW.DoWork += new DoWorkEventHandler(BGW_DoWork);
             BGW.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BGW_RunWorkerCompleted);
+            BGW.ProgressChanged += new ProgressChangedEventHandler(BGW_ProgressChanged);
+            BGW.WorkerReportsProgress = true;
+
+            BGWUpdate = new BackgroundWorker();
+            BGWUpdate.DoWork += new DoWorkEventHandler(BGWUpdate_DoWork);
+            BGWUpdate.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BGWUpdate_RunWorkerCompleted);
+            BGWUpdate.ProgressChanged += new ProgressChangedEventHandler(BGWUpdate_ProgressChanged);
+            BGWUpdate.WorkerReportsProgress = true;
 
             BGW.RunWorkerAsync(pf);
         }
@@ -72,10 +85,34 @@ namespace Campus.ePaper
             PrefixStudent _pf = (PrefixStudent)e.Argument;
 
             //取得切割後的檔案 & 基本資料內容
-            SectionList = ePaper.EatDocument(_doc, _pf);
+            SectionList = new List<StudentDocRecord>();
+            try
+            {
+                int successCount = 0; //用於計算進度。
+
+                foreach (Document each in _DocList)
+                {
+                    successCount++;
+
+                    SectionList.AddRange(ePaper.EatDocument(each, _pf));
+
+                    decimal seed = (decimal)successCount / _DocList.Count();
+                    BGW.ReportProgress((int)(seed * 100));
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show("檔案過多造成記憶體不足!!作業已中止!!\n" + ex.Message);
+                e.Cancel = true;
+            }
 
             //檢查學號是否存在系統內
             SectionList = ePaper.CheckDocument(SectionList, _pf);
+        }
+
+        void BGW_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            FISCA.Presentation.MotherForm.SetStatusBarMessage("檔案分析中...", e.ProgressPercentage);
         }
 
         void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -91,11 +128,12 @@ namespace Campus.ePaper
                 else
                 {
                     MsgBox.Show("資料分析發生錯誤!!\n" + e.Error.Message);
+                    this.DialogResult = System.Windows.Forms.DialogResult.No;
                 }
             }
             else
             {
-                MsgBox.Show("資料分析已取消!!");
+                this.DialogResult = System.Windows.Forms.DialogResult.No;
             }
         }
 
@@ -107,17 +145,31 @@ namespace Campus.ePaper
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("上傳學生電子報表：");
-            sb.AppendLine("報表名稱「" + _DocName + "」");
-            sb.AppendLine("學年度「" + intSchoolYear.Value.ToString() + "」");
-            sb.AppendLine("學期「" + intSemester.Value.ToString() + "」");
-            sb.AppendLine("");
-            sb.AppendLine("學生清單：");
+            if (SectionList.Count != 0)
+            {
+                btnUpdate.Enabled = false;
+                this.Text = "開始上傳 [" + _DocName + "]";
+                BGWUpdate.RunWorkerAsync();
+            }
+            else
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.No;
+            }
+        }
+
+        void BGWUpdate_DoWork(object sender, DoWorkEventArgs e)
+        {
+            sb = GetLogString();
+
             paperForStudent = new SmartSchool.ePaper.ElectronicPaper(_DocName, intSchoolYear.Value.ToString(), intSemester.Value.ToString(), SmartSchool.ePaper.ViewerType.Student);
-            int UpdateCount = 0;
+            UpdateCount = 0;
+
+            int successCount = 0; //用於計算進度。
+
             foreach (StudentDocRecord sr in SectionList)
             {
+                successCount++;
+
                 if (sr.Status == "(正常)")
                 {
                     if (sr.Doc != null)
@@ -131,15 +183,56 @@ namespace Campus.ePaper
                         UpdateCount++;
                     }
                 }
-            }
 
-            MsgBox.Show("上傳「" + UpdateCount + "」筆電子報表!!");
+                decimal seed = (decimal)successCount / SectionList.Count();
+                BGWUpdate.ReportProgress((int)(seed * 100));
+            }
 
             if (UpdateCount > 0)
             {
                 SmartSchool.ePaper.DispatcherProvider.Dispatch(paperForStudent);
                 FISCA.LogAgent.ApplicationLog.Log("電子報表", "上傳", sb.ToString());
-                this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            }
+        }
+
+        void BGWUpdate_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            FISCA.Presentation.MotherForm.SetStatusBarMessage("整理上傳資料...", e.ProgressPercentage);
+        }
+
+        private StringBuilder GetLogString()
+        {
+            StringBuilder log = new StringBuilder();
+            log.AppendLine("上傳學生電子報表：");
+            log.AppendLine("報表名稱「" + _DocName + "」");
+            log.AppendLine("學年度「" + intSchoolYear.Value.ToString() + "」");
+            log.AppendLine("學期「" + intSemester.Value.ToString() + "」");
+            log.AppendLine("");
+            log.AppendLine("學生清單：");
+            return log;
+        }
+
+        void BGWUpdate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (!e.Cancelled)
+            {
+                if (e.Error == null)
+                {
+                    if (UpdateCount > 0)
+                    {
+                        MsgBox.Show("上傳「" + UpdateCount + "」筆電子報表!!");
+                        this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+                    }
+                    else
+                    {
+                        this.DialogResult = System.Windows.Forms.DialogResult.No;
+                    }
+                }
+                else
+                {
+                    MsgBox.Show("發生錯誤!!\n" + e.Error.Message);
+                    this.DialogResult = System.Windows.Forms.DialogResult.No;
+                }
             }
             else
             {
