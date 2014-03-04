@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 幹部名稱長度不知是否需要限制 -->
+<!-- 幹部名稱是否不允許空白? -->
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="學號">
+			<Validate AutoCorrect="False" Description="「學號」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學號」長度必須小於12個文字。" ErrorType="Error" Validator="文字12" When=""/>
+		</Field>
+		<Field Required="False" Name="班級">
+		<Field Required="False" Name="座號">
+		<Field Required="False" Name="姓名">
+		<Field Required="True" Name="學年度">
+			<Validate AutoCorrect="False" Description="「學年度」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學年度」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="True" Name="學期">
+			<Validate AutoCorrect="False" Description="「學期」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學期」只允許「1、2」。" ErrorType="Error" Validator="學期列舉" When=""/>
+		</Field>
+		<Field Required="True" Name="幹部類別">
+			<Validate AutoCorrect="False" Description="「幹部類別」只允許「學校幹部、班級幹部、社團幹部」。" ErrorType="Error" Validator="幹部列舉" When=""/>
+		</Field>
+		<Field Required="True" Name="幹部名稱"></Field>
+		<Field Required="True" Name="說明"></Field>
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>0</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="文字12" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>12</MaxLength>
+		</FieldValidator>
+		<FieldValidator Name="學期列舉" Type="Enumeration">
+			<Item Value="1"/>
+			<Item Value="2"/>
+		</FieldValidator>
+		<FieldValidator Name="幹部列舉" Type="Enumeration">
+			<Item Value="學校幹部"/>
+			<Item Value="班級幹部"/>
+			<Item Value="社團幹部"/>
+		</FieldValidator>
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>

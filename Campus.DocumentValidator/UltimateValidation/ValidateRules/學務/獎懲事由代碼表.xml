@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="獎懲事由代碼">
+			<Validate AutoCorrect="False" Description="「獎懲事由代碼」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+		</Field>
+		<Field Required="True" Name="類別">
+			<Validate AutoCorrect="False" Description="「類別」只允許「獎勵、懲戒」。" ErrorType="Error" Validator="獎懲列舉" When=""/>
+		</Field>
+		<Field Required="True" Name="事由內容">
+			<Validate AutoCorrect="False" Description="「事由內容」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+		</Field>
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>0</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+				<FieldValidator Name="獎懲列舉" Type="Enumeration">
+			<Item Value="獎勵"/>
+			<Item Value="懲戒"/>
+		</FieldValidator>
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>

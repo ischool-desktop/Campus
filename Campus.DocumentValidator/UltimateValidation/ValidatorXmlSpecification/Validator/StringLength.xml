@@ -1,0 +1,7 @@
+﻿
+<!-- 驗證文字長度是否合法。 -->
+
+<FieldValidator Name="" Type="String">
+    <MaxLength Inclusive="True">200</MaxLength>
+    <MinLength Inclusive="True">1</MinLength>
+</FieldValidator>

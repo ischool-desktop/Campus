@@ -1,0 +1,3 @@
+﻿<Validation>
+    <Spreadsheet DataSource="成績資料.xls/學期科目成績" ValidateRule="學期科目成績.xml"/>
+</Validation>

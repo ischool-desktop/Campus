@@ -1,0 +1,30 @@
+﻿
+<FieldValidator Name="合法日期" Type="MixDate">
+    <!-- Gregorian | Taiwan-->
+    <!-- Pattern 中需要 Year,Month,Day 三個 Group。-->
+
+    <!-- 2007/8/8 (年/月/日) -->
+    <ValidPattern DateType="Gregorian">
+        <![CDATA[^(?<Year>[0-9]{4})/(?<Month>[0-9]{1,2})/(?<Day>[0-9]{1,2})$]]>
+    </ValidPattern>
+
+    <Matchs CorrectTo="yyyy/MM/dd">
+        <!-- 96/8/8 (年/月/日)-->
+        <Match DateType="Taiwan"><![CDATA[^(?<Year>[0-9]{2})/(?<Month>[0-9]{1,2})/(?<Day>[0-9]{1,2})$]]></Match>
+
+        <!-- 96-8-8 (年-月-日)-->
+        <Match DateType="Taiwan"><![CDATA[^(?<Year>[0-9]{2})-(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})$]]></Match>
+
+        <!-- 960808 (年月日)-->
+        <Match DateType="Taiwan"><![CDATA[^(?<Year>[0-9]{2})(?<Month>[0-9]{2})(?<Day>[0-9]{2})$]]></Match>
+
+        <!-- 2007-8-8 (年/月/日)-->
+        <Match DateType="Gregorian"><![CDATA[^(?<Year>[0-9]{4})-(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})$]]></Match>
+
+        <!-- 8-8-2007 (月/日/年)-->
+        <Match DateType="Gregorian"><![CDATA[^(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})-(?<Year>[0-9]{4})$]]></Match>
+
+        <!-- 20070812 (年月日)-->
+        <Match DateType="Gregorian"><![CDATA[^(?<Year>[0-9]{4})(?<Month>[0-9]{2})(?<Day>[0-9]{2})$]]></Match>
+    </Matchs>
+</FieldValidator>

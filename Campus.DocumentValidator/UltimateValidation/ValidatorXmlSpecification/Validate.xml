@@ -1,0 +1,5 @@
+﻿
+<!-- 欄位驗證規則。-->
+<!-- FieldList/Field/Validate -->
+
+<Validate Validator="年級範圍" ErrorType="Error" Description="範圍必須介於1~4之間" AutoCorrect="True"/>

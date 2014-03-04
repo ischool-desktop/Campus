@@ -1,0 +1,7 @@
+﻿
+<!-- 驗證資料是否符合指定的資料類型。-->
+
+<FieldValidator Name="" Type="DataType">
+     <!-- Integer Date CDATE-->
+    <Type>Integer</Type>
+</FieldValidator>

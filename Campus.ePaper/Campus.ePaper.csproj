@@ -39,9 +39,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Words, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+    <Reference Include="Aspose.Cells_201402, Version=7.7.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\Aspose.Words.dll</HintPath>
+      <HintPath>Library\Aspose.Cells_201402.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Aspose.Pdf_201402, Version=8.8.0.0, Culture=neutral, PublicKeyToken=47b2d0fcacdd3eb6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MOD_SmartSchool.ePaper\MOD_SmartSchool.ePaper\MOD_SmartSchool.ePaper\Library\Aspose.Pdf_201402.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Aspose.Words_201402, Version=14.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Aspose.Words_201402.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
@@ -61,6 +71,7 @@
     <Reference Include="FISCA.LogAgent, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\FISCA.LogAgent.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission, Version=1.2.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -72,6 +83,11 @@
       <HintPath>Library\FISCA.Presentation.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="FISCA.UDT, Version=1.0.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MOD_SmartSchool.ePaper\MOD_SmartSchool.ePaper\MOD_SmartSchool.ePaper\Library\FISCA.UDT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="K12.Data, Version=2.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\K12.Data.dll</HintPath>
@@ -80,6 +96,11 @@
     <Reference Include="SmartSchool.ePaper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\SmartSchool.ePaper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.ErrorReporting, Version=1.0.2.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\SmartSchool.ErrorReporting.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -94,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ePaper.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,8 +132,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Library\Aspose.Words.dll" />
-    <Content Include="Library\Aspose.Words.xml" />
+    <Content Include="Library\Aspose.Cells_201402.dll" />
+    <Content Include="Library\Aspose.Cells_201402.xml" />
+    <Content Include="Library\Aspose.Pdf_201402.dll" />
+    <Content Include="Library\Aspose.Pdf_201402.XML" />
+    <Content Include="Library\Aspose.Words_201402.dll" />
+    <Content Include="Library\Aspose.Words_201402.xml" />
     <Content Include="Library\DevComponents.DotNetBar2.dll" />
     <Content Include="Library\FISCA.Data.dll" />
     <Content Include="Library\FISCA.Data.pdb" />
@@ -127,11 +153,18 @@
     <Content Include="Library\FISCA.Presentation.dll" />
     <Content Include="Library\FISCA.Presentation.pdb" />
     <Content Include="Library\FISCA.Presentation.xml" />
+    <Content Include="Library\FISCA.UDT.dll" />
+    <Content Include="Library\FISCA.UDT.pdb" />
+    <Content Include="Library\FISCA.UDT.xml" />
     <Content Include="Library\K12.Data.dll" />
     <Content Include="Library\K12.Data.pdb" />
     <Content Include="Library\K12.Data.xml" />
     <Content Include="Library\SmartSchool.ePaper.dll" />
     <Content Include="Library\SmartSchool.ePaper.xml" />
+    <Content Include="Library\SmartSchool.ErrorReporting.dll" />
+    <Content Include="Library\SmartSchool.ErrorReporting.pdb" />
+    <Content Include="Library\SmartSchool.ErrorReporting.xml" />
+    <None Include="Resources\Aspose.Total_201402.lic" />
     <None Include="Resources\files_up_64.png" />
   </ItemGroup>
   <ItemGroup>

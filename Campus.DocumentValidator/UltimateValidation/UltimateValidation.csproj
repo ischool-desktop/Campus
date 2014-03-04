@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C49A769E-3EC7-4F39-984C-50AED4877DDD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UltimateValidation</RootNamespace>
+    <AssemblyName>UltimateValidation</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App.Designer.cs">
+      <DependentUpon>App.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="ValidateRules\學務\擔任幹部紀錄.xml" />
+    <Content Include="ValidateRules\學務\日常生活表現資料.xml" />
+    <Content Include="ValidateRules\學務\獎懲事由代碼表.xml" />
+    <Content Include="ValidateRules\學務\獎懲統計.xml" />
+    <Content Include="ValidateRules\學務\獎懲資料.xml" />
+    <Content Include="ValidateRules\學務\社團活動表現.xml" />
+    <Content Include="ValidateRules\學務\節次設定.xml" />
+    <Content Include="ValidateRules\學務\缺曠統計.xml" />
+    <Content Include="ValidateRules\學務\缺曠設定.xml" />
+    <Content Include="ValidateRules\學務\缺曠資料.xml" />
+    <Content Include="ValidateRules\學務\表現程度對照.xml" />
+    <Content Include="ValidateRules\學生基本資料.xml" />
+    <Content Include="ValidateRules\學生身分資料.xml" />
+    <Content Include="ValidateRules\學籍\學籍異動.xml" />
+    <Content Include="ValidateRules\學籍\新生異動.xml" />
+    <Content Include="ValidateRules\學籍\畢業異動.xml" />
+    <Content Include="ValidateRules\成績\學期歷程.xml" />
+    <Content Include="ValidateRules\成績\學期科目成績.xml" />
+    <Content Include="ValidateRules\成績\學期領域成績.xml" />
+    <Content Include="ValidateRules\成績\導師評語代碼表.xml" />
+    <Content Include="ValidateRules\成績\文字描述代碼表.xml" />
+    <Content Include="ValidateRules\教師基本資料.xml" />
+    <Content Include="ValidateRules\班級基本資料.xml" />
+    <Content Include="ValidatorXmlSpecification\DuplicateDetection.xml" />
+    <Content Include="ValidatorXmlSpecification\Validator\MixDate.xml" />
+    <Content Include="ValidatorXmlSpecification\ValidationRule.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ValidatorXmlSpecification\Validate.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ValidatorXmlSpecification\Validator\Decimal.xml" />
+    <Content Include="ValidatorXmlSpecification\Validator\Integer.xml" />
+    <EmbeddedResource Include="App.resx">
+      <DependentUpon>App.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Examples\學期科目成績.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ScanConfiguration.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ValidatorXmlSpecification\Condition.xml" />
+    <Content Include="ValidatorXmlSpecification\Validator\DataType.xml" />
+    <Content Include="ValidatorXmlSpecification\Validator\Enumeration.xml" />
+    <Content Include="ValidatorXmlSpecification\Validator\StringLength.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ValidatorXmlSpecification\Condition\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

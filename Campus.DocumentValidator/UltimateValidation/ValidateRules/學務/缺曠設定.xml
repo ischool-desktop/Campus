@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 縮寫必須是對照表內之熱鍵定義-->
+<!-- 熱鍵必須透過正規表示法[A-Za-z0-9]-->
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="缺曠名稱">
+			<Validate AutoCorrect="False" Description="「缺曠名稱」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+		</Field>
+		<Field Required="False" Name="縮寫">
+		</Field>
+		<Field Required="False" Name="熱鍵">
+		</Field>
+		<Field Required="False" Name="不影響全勤">
+			<Validate AutoCorrect="False" Description="「不影響全勤」只允許「是、否」。" ErrorType="Error" Validator="不影響全勤列舉" When=""/>
+		</Field>
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>0</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="文字12" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>12</MaxLength>
+		</FieldValidator>
+		<FieldValidator Name="學期列舉" Type="Enumeration">
+			<Item Value="1"/>
+			<Item Value="2"/>
+		</FieldValidator>
+		<FieldValidator Name="不影響全勤列舉" Type="Enumeration">
+			<Item Value="是"/>
+			<Item Value="否"/>
+		</FieldValidator>
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>

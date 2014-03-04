@@ -1,0 +1,11 @@
+﻿
+<DuplicateDetection>
+    <Detector Name="PrimaryKey">
+        <Field Name="學號"/>
+    </Detector>
+    <Detector Name="PrimaryKey2">
+        <Field Name="學年度"/>
+        <Field Name="學期"/>
+        <Field Name="科目"/>
+    </Detector>
+</DuplicateDetection>

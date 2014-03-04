@@ -49,6 +49,8 @@ namespace Campus.ePaper
         {
             InitializeComponent();
 
+
+
             _DocList = DocList;
             this.Text = "開始報表分析... - " + Name;
             _DocName = Name;
@@ -102,7 +104,9 @@ namespace Campus.ePaper
             }
             catch (Exception ex)
             {
+                SmartSchool.ErrorReporting.ReportingService.ReportException(ex);
                 MsgBox.Show("檔案過多造成記憶體不足!!作業已中止!!\n" + ex.Message);
+
                 e.Cancel = true;
             }
 
@@ -117,7 +121,8 @@ namespace Campus.ePaper
 
         void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Text = "完成分析請確認上傳 [" + _DocName + "]";
+            this.Text = "分析完成,請確認上傳「" + _DocName + "」";
+            labelX3.Text = "共「" + SectionList.Count + "」筆電子報表";
             if (!e.Cancelled)
             {
                 if (e.Error == null)
@@ -148,8 +153,8 @@ namespace Campus.ePaper
             if (SectionList.Count != 0)
             {
                 btnUpdate.Enabled = false;
-                this.Text = "開始上傳 [" + _DocName + "]";
-                BGWUpdate.RunWorkerAsync();
+                this.Text = "開始上傳「" + _DocName + "」";
+                BGWUpdate.RunWorkerAsync(cbWordChangePDF.Checked);
             }
             else
             {
@@ -159,7 +164,9 @@ namespace Campus.ePaper
 
         void BGWUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
-            sb = GetLogString();
+            bool _cbWordChangePDF = (bool)e.Argument;
+
+            sb = GetLogString(_cbWordChangePDF);
 
             paperForStudent = new SmartSchool.ePaper.ElectronicPaper(_DocName, intSchoolYear.Value.ToString(), intSemester.Value.ToString(), SmartSchool.ePaper.ViewerType.Student);
             UpdateCount = 0;
@@ -178,9 +185,18 @@ namespace Campus.ePaper
                         //格式 / 內容 / 對象的系統編號
                         sb.AppendLine(string.Format("班級「{1}」座號「{2}」姓名「{0}」學號「{3}」", sr.StudentName, sr.StudentClass, sr.StudentSeatNo, sr.Student.Student_Number));
                         MemoryStream stream = new MemoryStream();
-                        sr.Doc.Save(stream, SaveFormat.Doc);
-                        paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, sr.Student.StudentID));
+                        if (_cbWordChangePDF)
+                        {
+                            sr.Doc.Save(stream, SaveFormat.Pdf);
+                            paperForStudent.Append(new PaperItem(PaperFormat.AdobePdf, stream, sr.Student.StudentID));
+                        }
+                        else
+                        {
+                            sr.Doc.Save(stream, SaveFormat.Doc);
+                            paperForStudent.Append(new PaperItem(PaperFormat.Office2003Doc, stream, sr.Student.StudentID));
+                        }
                         UpdateCount++;
+
                     }
                 }
 
@@ -190,6 +206,7 @@ namespace Campus.ePaper
 
             if (UpdateCount > 0)
             {
+                BGWUpdate.ReportProgress(100, "上傳中...");
                 SmartSchool.ePaper.DispatcherProvider.Dispatch(paperForStudent);
                 FISCA.LogAgent.ApplicationLog.Log("電子報表", "上傳", sb.ToString());
             }
@@ -200,13 +217,17 @@ namespace Campus.ePaper
             FISCA.Presentation.MotherForm.SetStatusBarMessage("整理上傳資料...", e.ProgressPercentage);
         }
 
-        private StringBuilder GetLogString()
+        private StringBuilder GetLogString(bool _cbWordChangePDF)
         {
             StringBuilder log = new StringBuilder();
             log.AppendLine("上傳學生電子報表：");
             log.AppendLine("報表名稱「" + _DocName + "」");
             log.AppendLine("學年度「" + intSchoolYear.Value.ToString() + "」");
             log.AppendLine("學期「" + intSemester.Value.ToString() + "」");
+            if (_cbWordChangePDF)
+                log.AppendLine("格式「PDF」");
+            else
+                log.AppendLine("格式「Word」");
             log.AppendLine("");
             log.AppendLine("學生清單：");
             return log;
@@ -221,6 +242,7 @@ namespace Campus.ePaper
                     if (UpdateCount > 0)
                     {
                         MsgBox.Show("上傳「" + UpdateCount + "」筆電子報表!!");
+                        FISCA.Presentation.MotherForm.SetStatusBarMessage("");
                         this.DialogResult = System.Windows.Forms.DialogResult.Yes;
                     }
                     else
@@ -254,7 +276,14 @@ namespace Campus.ePaper
                 {
                     if (record.Student != null)
                     {
-                        record.Doc.Save(fbd.SelectedPath + "\\" + record.Student.Student_Number + "_" + record.StudentName + ".doc");
+                        if (cbWordChangePDF.Checked)
+                        {
+                            record.Doc.Save(fbd.SelectedPath + "\\" + record.Student.Student_Number + "_" + record.StudentName + ".pdf", SaveFormat.Pdf);
+                        }
+                        else
+                        {
+                            record.Doc.Save(fbd.SelectedPath + "\\" + record.Student.Student_Number + "_" + record.StudentName + ".doc", SaveFormat.Doc);
+                        }
                     }
                 }
                 MessageBox.Show("已儲存!!");

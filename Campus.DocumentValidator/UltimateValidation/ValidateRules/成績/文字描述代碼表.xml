@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="分類" />
+		<Field Required="True" Name="代碼" EmptyAlsoValidate="True">
+			<Validate AutoCorrect="False" Description="「代碼」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+		</Field>
+		<Field Required="True" Name="評語內容" EmptyAlsoValidate="True">
+			<Validate AutoCorrect="False" Description="「評語內容」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+		</Field>
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 統計權重有小數點-->
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="節次名稱">
+			<Validate AutoCorrect="False" Description="「缺曠名稱」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/></Field>
+		</Field>
+		<Field Required="False" Name="類型">
+			<Validate AutoCorrect="False" Description="「缺曠名稱」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/></Field>
+		</Field>
+		<Field Required="False" Name="顯示順序">
+			<Validate AutoCorrect="False" Description="「顯示順序」必須是數字。 " ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="False" Name="統計權重"></Field>
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>0</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+1.學號、身分證號、登入帳號不可重覆將用主鍵驗正處理。
+2.國籍合法、合法國籍、合法學歷需要外部資料。
+3.日期需要再處理。
+4.班級欄位需要外部資料。
+-->
+
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="姓名">
+			<Validate AutoCorrect="False" Description="「姓名」不允許空白。" ErrorType="Error" Validator="不可空白" When="" />
+			<Validate AutoCorrect="False" Description="「姓名」長度必須小於20個文字。" ErrorType="Error" Validator="文字20" When="" />
+		</Field>
+		<Field Required="False" Name="學號">
+			<Validate AutoCorrect="False" Description="「學號」長度必須小於12個文字。 " ErrorType="Error" Validator="文字12" When="" />
+		</Field>
+		<Field Required="False" Name="身分證號">
+			<Validate AutoCorrect="False" Description="「身分證號」長度必須小於20個文字。 " ErrorType="Error" Validator="文字20" When="" />
+		</Field>
+		<Field Required="False" Name="國籍"> 
+			<Validate AutoCorrect="False" Description="「國籍」長度必須小於50個文字。 " ErrorType="Error" Validator="文字50" When="" />
+		</Field>
+		<Field Required="False" Name="出生地">
+			<Validate AutoCorrect="False" Description="「出生地」長度必須小於30個文字。 " ErrorType="Error" Validator="文字30" When="" />
+		</Field>
+		<Field Required="False" Name="生日">
+			<Validate AutoCorrect="False" Description="「生日」可能不正確。(系統驗證「%MinDate」到「%MaxDate」之間為較合理日期) " ErrorType="Warning" Validator="日期" When="生日非空白" />		
+		</Field>
+		<Field Required="False" Name="性別">
+			<Validate AutoCorrect="True" Description="「性別」只允許「男」與「女」。 " ErrorType="Error" Validator="性別" When="" />
+		</Field>
+		<Field Required="False" Name="英文姓名">
+			<Validate AutoCorrect="False" Description="「英文姓名」長度必須小於30個文字。" ErrorType="Error" Validator="文字30" When="" />		
+		</Field>
+		<Field Required="False" Name="班級">
+		
+		</Field>
+		<Field Required="False" Name="年級" EmptyAlsoValidate="False">
+			<Validate AutoCorrect="False" Description="「年級」建議介於「1~3或7~9」。" ErrorType="Warning" Validator="年級列舉" When=""/>		
+		</Field>
+		<Field Required="False" Name="座號" EmptyAlsoValidate="False">
+			<Validate AutoCorrect="False" Description="「座號」必須是數字。" ErrorType="Error" Validator="Integer極限" When="" />			
+		</Field>
+		<Field Required="False" Name="登入帳號">
+			<Validate AutoCorrect="False" Description="「登入帳號」長度必須小於50個文字。" ErrorType="Error" Validator="文字50" When="" />
+		</Field>
+		<Field Required="False" Name="登入密碼">
+			<Validate AutoCorrect="False" Description="「登入密碼」長度必須小於50個文字。" ErrorType="Error" Validator="文字50" When="" />
+		</Field>
+				
+		<Field Required="False" Name="帳號類型">
+			<Validate AutoCorrect="False" Description="「帳號類型」只允許「Greening、自定帳號」。" ErrorType="Error" Validator="帳號類型列舉" When="" />		
+		</Field>
+		
+		
+		<Field Required="False" Name="戶籍:郵遞區號"> </Field>
+		<Field Required="False" Name="戶籍:縣市"> </Field>
+		<Field Required="False" Name="戶籍:鄉鎮市區"> </Field>
+		<Field Required="False" Name="戶籍:村里"> </Field>
+		<Field Required="False" Name="戶籍:鄰"> </Field>
+		<Field Required="False" Name="戶籍:其他"> </Field>
+		<Field Required="False" Name="聯絡:郵遞區號"> </Field>
+		<Field Required="False" Name="聯絡:縣市"> </Field>
+		<Field Required="False" Name="聯絡:鄉鎮市區"> </Field>
+		<Field Required="False" Name="聯絡:村里"> </Field>
+		<Field Required="False" Name="聯絡:鄰"> </Field>
+		<Field Required="False" Name="聯絡:其他"> </Field>
+		
+		<Field Required="False" Name="戶籍電話">
+			<Validate AutoCorrect="False" Description="「戶籍電話」長度必須小於30個文字。 " ErrorType="Error" Validator="文字30" When="" />
+		</Field>
+		<Field Required="False" Name="聯絡電話">
+			<Validate AutoCorrect="False" Description="「聯絡電話」長度必須小於30個文字。 " ErrorType="Error" Validator="文字30" When="" />
+		</Field>
+		<Field Required="False" Name="行動電話">
+			<Validate AutoCorrect="False" Description="「行動電話」長度必須小於30個文字。 " ErrorType="Error" Validator="文字30" When="" />		
+		</Field>
+		<Field Required="False" Name="其它電話:1"> </Field>
+		<Field Required="False" Name="其它電話:2"> </Field>
+		<Field Required="False" Name="其它電話:3"> </Field>
+		
+		<Field Required="False" Name="監護人姓名">
+			<Validate AutoCorrect="False" Description="「監護人姓名」長度必須小於20個文字。 " ErrorType="Error" Validator="文字20" When="" />
+		</Field>
+		<Field Required="False" Name="監護人身分證號">
+			<Validate AutoCorrect="False" Description="「監護人身分證號」長度必須小於20個文字。 " ErrorType="Error" Validator="文字20" When="" />		
+		</Field>
+		<Field Required="False" Name="監護人國籍">
+			<Validate AutoCorrect="False" Description="「監護人國籍」長度必須小於30個文字。 " ErrorType="Error" Validator="文字30" When="" />
+		</Field>
+		<Field Required="False" Name="監護人關係">
+		
+		</Field>
+		<Field Required="False" Name="監護人:學歷">
+
+		</Field>
+		<Field Required="False" Name="監護人:職業"> </Field>
+		<Field Required="False" Name="監護人:電話"> </Field>
+		<Field Required="False" Name="父親姓名">
+			<Validate AutoCorrect="False" Description="「父親姓名」長度必須小於20個文字。 " ErrorType="Error" Validator="文字20" When="" />
+		</Field>
+		<Field Required="False" Name="父親身分證號">
+			<Validate AutoCorrect="False" Description="「父親身分證號」長度必須小於20個文字。 " ErrorType="Error" Validator="文字20" When="" />
+		</Field>
+		<Field Required="False" Name="父親國籍">
+			<Validate AutoCorrect="False" Description="「父親國籍」長度必須小於30個文字。 " ErrorType="Error" Validator="文字30" When="" />		
+		</Field>
+		<Field Required="False" Name="父親存歿">
+			<Validate AutoCorrect="False" Description="「父親存歿」只允許「存」或「歿」。 " ErrorType="Error" Validator="存歿" When="" />
+		</Field>
+		<Field Required="False" Name="父親:學歷"> </Field>
+		<Field Required="False" Name="父親:職業"> </Field>
+		<Field Required="False" Name="父親:電話"> </Field>
+		<Field Required="False" Name="母親姓名">
+			<Validate AutoCorrect="False" Description="「母親姓名」長度必須小於20個文字。 " ErrorType="Error" Validator="文字20" When="" />
+		</Field>
+		<Field Required="False" Name="母親身分證號">
+			<Validate AutoCorrect="False" Description="「母親身分證號」長度必須小於20個文字。 " ErrorType="Error" Validator="文字20" When="" />
+		</Field>
+		<Field Required="False" Name="母親國籍">
+			<Validate AutoCorrect="False" Description="「母親國籍」長度必須小於30個文字。 " ErrorType="Error" Validator="文字30" When="" />
+		</Field>
+		<Field Required="False" Name="母親存歿">
+			<Validate AutoCorrect="False" Description="「母親存歿」只允許「存」或「歿」。 " ErrorType="Error" Validator="存歿" When="" />
+		</Field>
+		<Field Required="False" Name="母親:學歷"> </Field>
+		<Field Required="False" Name="母親:職業"> </Field>
+		<Field Required="False" Name="母親:電話"> </Field>
+		<Field Required="False" Name="學生狀態"> </Field>
+		<Field Required="False" Name="前級:學校名稱">
+		
+		</Field>
+		<Field Required="False" Name="前級:學校所在地"> </Field>
+		<Field Required="False" Name="前級:班級"> </Field>
+		<Field Required="False" Name="前級:座號"> </Field>
+		<Field Required="False" Name="前級:備註"> </Field>
+
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>1</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="Integer1-5" Type="Integer">
+			<MinValue>1</MinValue>
+			<MaxValue>5</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="文字12" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>12</MaxLength>
+		</FieldValidator>
+		
+		<FieldValidator Name="文字20" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>20</MaxLength>
+		</FieldValidator>
+		
+		<FieldValidator Name="文字30" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>30</MaxLength>
+		</FieldValidator>
+		
+		<FieldValidator Name="文字50" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>50</MaxLength>
+		</FieldValidator>
+		
+		<FieldValidator Name="學期列舉" Type="Enumeration">
+			<Item Value="1"/>
+			<Item Value="2"/>
+		</FieldValidator>
+		<FieldValidator Name="年級列舉" Type="Enumeration">
+			<Item Value="1"/>
+			<Item Value="2"/>
+			<Item Value="3"/>
+			<Item Value="7"/>
+			<Item Value="8"/>
+			<Item Value="9"/>
+		</FieldValidator>		
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>

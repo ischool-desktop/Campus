@@ -1,0 +1,16 @@
+﻿
+<!-- 驗證值是否在清單中 -->
+
+<FieldValidator Name="" Type="Enumeration">
+    <Item Value="男">
+        <Variation>1</Variation>
+        <Variation>M</Variation>
+        <Variation>-1</Variation>
+        <Variation>true</Variation>
+    </Item>
+    <Item Value="女">
+        <Variation>0</Variation>
+        <Variation>F</Variation>
+        <Variation>false</Variation>
+    </Item>
+</FieldValidator>

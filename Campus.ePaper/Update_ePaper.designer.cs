@@ -30,6 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -38,11 +43,8 @@
             this.intSemester = new DevComponents.Editors.IntegerInput();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.linkSaveFile = new System.Windows.Forms.LinkLabel();
-            this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSeatNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.cbWordChangePDF = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).BeginInit();
@@ -77,6 +79,41 @@
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(521, 350);
             this.dataGridViewX1.TabIndex = 0;
+            // 
+            // colStudentNumber
+            // 
+            this.colStudentNumber.DataPropertyName = "PrefixName";
+            this.colStudentNumber.HeaderText = "比對名稱";
+            this.colStudentNumber.Name = "colStudentNumber";
+            this.colStudentNumber.ReadOnly = true;
+            // 
+            // colClass
+            // 
+            this.colClass.DataPropertyName = "StudentClass";
+            this.colClass.HeaderText = "班級";
+            this.colClass.Name = "colClass";
+            this.colClass.ReadOnly = true;
+            // 
+            // colSeatNo
+            // 
+            this.colSeatNo.DataPropertyName = "StudentSeatNo";
+            this.colSeatNo.HeaderText = "座號";
+            this.colSeatNo.Name = "colSeatNo";
+            this.colSeatNo.ReadOnly = true;
+            // 
+            // colStudentID
+            // 
+            this.colStudentID.DataPropertyName = "StudentName";
+            this.colStudentID.HeaderText = "姓名";
+            this.colStudentID.Name = "colStudentID";
+            this.colStudentID.ReadOnly = true;
+            // 
+            // colStatus
+            // 
+            this.colStatus.DataPropertyName = "Status";
+            this.colStatus.HeaderText = "狀態";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
             // 
             // btnUpdate
             // 
@@ -193,46 +230,44 @@
             this.linkSaveFile.Text = "另存新檔";
             this.linkSaveFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSaveFile_LinkClicked);
             // 
-            // colStudentNumber
+            // labelX3
             // 
-            this.colStudentNumber.DataPropertyName = "PrefixName";
-            this.colStudentNumber.HeaderText = "比對名稱";
-            this.colStudentNumber.Name = "colStudentNumber";
-            this.colStudentNumber.ReadOnly = true;
+            this.labelX3.AutoSize = true;
+            this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
-            // colClass
             // 
-            this.colClass.DataPropertyName = "StudentClass";
-            this.colClass.HeaderText = "班級";
-            this.colClass.Name = "colClass";
-            this.colClass.ReadOnly = true;
             // 
-            // colSeatNo
+            this.labelX3.BackgroundStyle.Class = "";
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Location = new System.Drawing.Point(105, 403);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(114, 21);
+            this.labelX3.TabIndex = 8;
+            this.labelX3.Text = "共「」筆電子報表";
             // 
-            this.colSeatNo.DataPropertyName = "StudentSeatNo";
-            this.colSeatNo.HeaderText = "座號";
-            this.colSeatNo.Name = "colSeatNo";
-            this.colSeatNo.ReadOnly = true;
+            // cbWordChangePDF
             // 
-            // colStudentID
+            this.cbWordChangePDF.AutoSize = true;
+            this.cbWordChangePDF.BackColor = System.Drawing.Color.Transparent;
             // 
-            this.colStudentID.DataPropertyName = "StudentName";
-            this.colStudentID.HeaderText = "姓名";
-            this.colStudentID.Name = "colStudentID";
-            this.colStudentID.ReadOnly = true;
             // 
-            // colStatus
             // 
-            this.colStatus.DataPropertyName = "Status";
-            this.colStatus.HeaderText = "狀態";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
+            this.cbWordChangePDF.BackgroundStyle.Class = "";
+            this.cbWordChangePDF.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.cbWordChangePDF.Location = new System.Drawing.Point(328, 13);
+            this.cbWordChangePDF.Name = "cbWordChangePDF";
+            this.cbWordChangePDF.Size = new System.Drawing.Size(168, 21);
+            this.cbWordChangePDF.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cbWordChangePDF.TabIndex = 9;
+            this.cbWordChangePDF.Text = "上傳時Word檔轉為PDF";
             // 
             // Update_ePaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 431);
+            this.Controls.Add(this.cbWordChangePDF);
+            this.Controls.Add(this.labelX3);
             this.Controls.Add(this.linkSaveFile);
             this.Controls.Add(this.intSemester);
             this.Controls.Add(this.intSchoolYear);
@@ -241,6 +276,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dataGridViewX1);
+            this.DoubleBuffered = true;
             this.Name = "Update_ePaper";
             this.Text = "報表分析與上傳";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
@@ -267,5 +303,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colSeatNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStudentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.Controls.CheckBoxX cbWordChangePDF;
     }
 }

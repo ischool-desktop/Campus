@@ -1,0 +1,125 @@
+﻿<ValidationRule>
+
+    <FieldList>
+        <Field Name="學號" EmptyAlsoValidate="True">
+            <Validate Validator="必填" ErrorType="Error" Description="此欄位必須要輸入資料。" AutoCorrect="False"/>
+            <Validate Validator="文字12" ErrorType="Error" Description="長度應該在 12 字元以下。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="班級">
+            <Validate Validator="文字20" ErrorType="Error" Description="長度應該在 20 字元以下。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="座號">
+            <Validate Validator="是整數" ErrorType="Error" Description="此欄位必須輸入數字。" AutoCorrect="False" />
+            <Validate Validator="合理座號" ErrorType="Warning" Description="一般座號應該在 1 ~ 65 之間。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="姓名">
+            <Validate Validator="文字20" ErrorType="Error" Description="長度應該在 20 字元以下。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="學年度" EmptyAlsoValidate="True">
+            <Validate Validator="必填" ErrorType="Error" Description="此欄位必須要輸入資料。" AutoCorrect="False"/>
+            <Validate Validator="合理學年度" ErrorType="Warning" Description="請確認學年度資料是否有誤。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="學期" EmptyAlsoValidate="True">
+            <Validate Validator="必填" ErrorType="Error" Description="此欄位必須要輸入資料。" AutoCorrect="False"/>
+            <Validate Validator="合理學期" ErrorType="Warning" Description="請確認學期資料是否有誤。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="領域">
+            <Validate Validator="文字20" ErrorType="Error" Description="長度應該在 20 字元以下。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="科目" EmptyAlsoValidate="True">
+            <Validate Validator="必填" ErrorType="Error" Description="此欄位必須要輸入資料。" AutoCorrect="False"/>
+            <Validate Validator="文字20" ErrorType="Error" Description="長度應該在 20 字元以下。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="權數" EmptyAlsoValidate="True">
+            <Validate Validator="必填" ErrorType="Error" Description="此欄位必須要輸入資料。" AutoCorrect="False"/>
+            <Validate Validator="是有理數" ErrorType="Error" Description="請輸入合法的數字資料。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="節數" EmptyAlsoValidate="True">
+            <Validate Validator="必填" ErrorType="Error" Description="此欄位必須要輸入資料。" AutoCorrect="False"/>
+            <Validate Validator="是有理數" ErrorType="Error" Description="請輸入合法的數字資料。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="分數評量">
+            <Validate Validator="是有理數" ErrorType="Error" Description="請輸入合法的數字資料。" AutoCorrect="False"/>
+            <Validate Validator="合理成績" ErrorType="Warning" Description="建議介於 0-100，可以有小數點。" AutoCorrect="False"/>
+        </Field>
+
+        <Field Name="努力程度">
+            <Validate Validator="是整數" ErrorType="Error" Description="此欄位必須輸入正整數。" AutoCorrect="False" />
+        </Field>
+
+        <Field Name="文字描述"/>
+        <Field Name="註記"/>
+    </FieldList>
+
+    <ValidatorList>
+        <FieldValidator Name="必填" Type="StringLength">
+            <MinLength Inclusive="True">1</MinLength>
+        </FieldValidator>
+
+        <FieldValidator Name="是整數" Type="DataType">
+            <Type>Integer</Type>
+        </FieldValidator>
+
+        <FieldValidator Name="是有理數" Type="DataType">
+            <Type>Decimal</Type>
+        </FieldValidator>
+
+        <FieldValidator Name="文字12" Type="StringLength">
+            <MaxLength Inclusive="True">12</MaxLength>
+        </FieldValidator>
+
+        <FieldValidator Name= "文字20" Type="StringLength">
+            <MaxLength Inclusive="True">20</MaxLength>
+        </FieldValidator>
+
+        <FieldValidator Name= "文字100" Type="StringLength">
+            <MaxLength Inclusive="True">20</MaxLength>
+        </FieldValidator>
+
+        <FieldValidator Name="合理座號" Type="Integer">
+            <MaxValue Inclusive="True">65</MaxValue>
+            <MinValue Inclusive="True">1</MinValue>
+        </FieldValidator>
+
+        <FieldValidator Name="合理學年度" Type="Integer">
+            <MaxValue Inclusive="True">120</MaxValue>
+            <MinValue Inclusive="True">80</MinValue>
+        </FieldValidator>
+
+        <FieldValidator Name="合理學期" Type="Integer">
+            <MaxValue Inclusive="True">2</MaxValue>
+            <MinValue Inclusive="True">1</MinValue>
+        </FieldValidator>
+
+        <FieldValidator Name="合理成績" Type="Decimal">
+            <MaxValue Inclusive="True">100</MaxValue>
+            <MinValue Inclusive="True">1</MinValue>
+        </FieldValidator>
+
+        <FieldValidator Name="" Type="Integer">
+            <MaxValue Inclusive="True">2</MaxValue>
+            <MinValue Inclusive="True">1</MinValue>
+        </FieldValidator>
+
+    </ValidatorList>
+
+    <ConditionList>
+        <Condition Name="班級是資三忠">
+            <Evaluate Evaluator="StaticString" Field="班級" Operator="=" Value="資三忠"/>
+        </Condition>
+    </ConditionList>
+
+    <RowValidate>
+    </RowValidate>
+
+</ValidationRule>

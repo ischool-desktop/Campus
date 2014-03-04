@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus.Diagnostics", "Campus.Diagnostics\Campus.Diagnostics.csproj", "{7F262083-C272-4D76-ADCB-2DFF26D7B26C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus.Windows", "Campus.Windows\Campus.Windows.csproj", "{F1E82140-6B76-4D54-AEC3-BA9B51282389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus", "Campus\Campus.csproj", "{01192844-00CA-4126-85EC-D72A72821F70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus.Report", "Campus.Report\Campus.Report.csproj", "{6475E15E-4BE7-47E9-A7B4-0014E6670F95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus.Log", "Campus.Log\Campus.Log.csproj", "{481762F1-C331-4966-82AA-895292B8C026}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus.Import", "Campus.Import\Campus.Import.csproj", "{B443EDE2-16FB-4168-A8D5-61A9C1A8586B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus.Validator", "Campus.Validator\Campus.Validator.csproj", "{E3B22010-15A9-4705-A02B-AE3B166FBA42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campus.DocumentValidator", "Campus.DocumentValidator\Campus.DocumentValidator\Campus.DocumentValidator.csproj", "{B3508927-0AC3-4965-A777-AC3F314B3261}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F262083-C272-4D76-ADCB-2DFF26D7B26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F262083-C272-4D76-ADCB-2DFF26D7B26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F262083-C272-4D76-ADCB-2DFF26D7B26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F262083-C272-4D76-ADCB-2DFF26D7B26C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1E82140-6B76-4D54-AEC3-BA9B51282389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1E82140-6B76-4D54-AEC3-BA9B51282389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1E82140-6B76-4D54-AEC3-BA9B51282389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1E82140-6B76-4D54-AEC3-BA9B51282389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01192844-00CA-4126-85EC-D72A72821F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01192844-00CA-4126-85EC-D72A72821F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01192844-00CA-4126-85EC-D72A72821F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01192844-00CA-4126-85EC-D72A72821F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6475E15E-4BE7-47E9-A7B4-0014E6670F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6475E15E-4BE7-47E9-A7B4-0014E6670F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6475E15E-4BE7-47E9-A7B4-0014E6670F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6475E15E-4BE7-47E9-A7B4-0014E6670F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{481762F1-C331-4966-82AA-895292B8C026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{481762F1-C331-4966-82AA-895292B8C026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{481762F1-C331-4966-82AA-895292B8C026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{481762F1-C331-4966-82AA-895292B8C026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B443EDE2-16FB-4168-A8D5-61A9C1A8586B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B443EDE2-16FB-4168-A8D5-61A9C1A8586B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B443EDE2-16FB-4168-A8D5-61A9C1A8586B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B443EDE2-16FB-4168-A8D5-61A9C1A8586B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3B22010-15A9-4705-A02B-AE3B166FBA42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3B22010-15A9-4705-A02B-AE3B166FBA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3B22010-15A9-4705-A02B-AE3B166FBA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3B22010-15A9-4705-A02B-AE3B166FBA42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3508927-0AC3-4965-A777-AC3F314B3261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3508927-0AC3-4965-A777-AC3F314B3261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3508927-0AC3-4965-A777-AC3F314B3261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3508927-0AC3-4965-A777-AC3F314B3261}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ischool_DataAccess1.vsmdi
+	EndGlobalSection
+EndGlobal

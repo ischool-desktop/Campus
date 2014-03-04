@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B3508927-0AC3-4965-A777-AC3F314B3261}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Campus.DocumentValidator</RootNamespace>
+    <AssemblyName>Campus.DocumentValidator</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\ischool%28old%29\localmodules\Campus\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>C:\TFS2010\Research\A-Team\CampusLibrary\Campus\obj\Debug\Campus.DocumentValidator.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FISCA">
+      <HintPath>..\..\Library\FISCA.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Condition\AndCondition.cs" />
+    <Compile Include="Condition\Condition.cs" />
+    <Compile Include="Condition\ConditionCollection.cs" />
+    <Compile Include="Condition\NotCondition.cs" />
+    <Compile Include="Condition\OrCondition.cs" />
+    <Compile Include="Condition\StaticDateTime.cs" />
+    <Compile Include="Condition\StaticInteger.cs" />
+    <Compile Include="Condition\StaticString.cs" />
+    <Compile Include="Condition\XorCondition.cs" />
+    <Compile Include="DocumentValidate.cs" />
+    <Compile Include="DuplicateDetection.cs" />
+    <Compile Include="EnumDefinitions.cs" />
+    <Compile Include="EventDefinitions.cs" />
+    <Compile Include="FactoryProvider.cs" />
+    <Compile Include="FieldDescription.cs" />
+    <Compile Include="FieldValidate.cs" />
+    <Compile Include="FieldValidatedDescription.cs" />
+    <Compile Include="FieldValidatedDescription_Extension.cs" />
+    <Compile Include="FieldValidatorCollection.cs" />
+    <Compile Include="FieldValidator\DecimalValidator.cs" />
+    <Compile Include="FieldValidator\DateValidator.cs" />
+    <Compile Include="FieldValidator\EnumerationValidator.cs" />
+    <Compile Include="FieldValidator\IntegerValidator.cs" />
+    <Compile Include="FieldValidator\MixDateValidator.cs" />
+    <Compile Include="FieldValidator\RegexValidator.cs" />
+    <Compile Include="FieldValidator\StringLengthValidator.cs" />
+    <Compile Include="FieldValidator\DataTypeValidator.cs" />
+    <Compile Include="FieldValidator\UniqueKeyValidator.cs" />
+    <Compile Include="Interfaces\IConditionExpression.cs" />
+    <Compile Include="Interfaces\IConditionFactory.cs" />
+    <Compile Include="Interfaces\IFieldValidator.cs" />
+    <Compile Include="Interfaces\IFieldValidatorFactory.cs" />
+    <Compile Include="Interfaces\IRowStream.cs" />
+    <Compile Include="Interfaces\IRowVaildator.cs" />
+    <Compile Include="Interfaces\IRowValidatorFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RowValidate.cs" />
+    <Compile Include="RowValidatorCollection.cs" />
+    <Compile Include="RowValidator\DuplicationRowValidator.cs" />
+    <Compile Include="RowValidator\DefaultRowValidator.cs" />
+    <Compile Include="RowValidator\LookupRowValidator.cs" />
+    <Compile Include="RowValidator\UniqueKeyRowValidator.cs" />
+    <Compile Include="ValidateStatement.cs" />
+    <Compile Include="ValidateStatements.cs" />
+    <Compile Include="XmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,6 @@
+﻿<!-- 驗證數字是否合法。 -->
+
+<FieldValidator Name="" Type="Integer">
+    <MaxValue Inclusive="True">200</MaxValue>
+    <MinValue Inclusive="True">1</MinValue>
+</FieldValidator>

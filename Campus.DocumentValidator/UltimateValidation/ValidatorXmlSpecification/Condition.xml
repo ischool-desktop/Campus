@@ -1,0 +1,19 @@
+﻿
+<!-- 用於 Validate 的 When 屬性。-->
+
+<ConditionList>
+    <Condition Name="超複雜">
+        <And>
+            <Evaluate Evaluator="StaticInteger" Field="座號" Operator="!=" Value=""/>
+            <Evaluate Evaluator="StaticString" Field="性別" Operator="=" Value="男"/>
+            <Or>
+                <Evaluate Evaluator="StaticInteger" Field="年級" Operator="=" Value="1"/>
+                <Evaluate Evaluator="StaticInteger" Field="年級" Operator="=" Value="3"/>
+            </Or>
+            <And>
+                <Evaluate Evaluator="StaticDateTime" Field="生日" Operator=">=" Value="2000/1/1"/>
+                <Evaluate Evaluator="StaticDateTime" Field="生日" Operator="&lt;=" Value="2010/12/31"/>
+            </And>
+        </And>
+    </Condition>
+</ConditionList>

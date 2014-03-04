@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1E82140-6B76-4D54-AEC3-BA9B51282389}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Campus.Windows</RootNamespace>
+    <AssemblyName>Campus.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\ischool%28old%29\localmodules\Campus\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>C:\TFS2010\Research\A-Team\CampusLibrary\Campus\obj\Debug\Campus.Windows.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiproSoftware.Shared.Net20">
+      <HintPath>..\Library\ActiproSoftware.Shared.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ActiproSoftware.SyntaxEditor.Addons.Web.Net20">
+      <HintPath>..\Library\ActiproSoftware.SyntaxEditor.Addons.Web.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ActiproSoftware.SyntaxEditor.Net20">
+      <HintPath>..\Library\ActiproSoftware.SyntaxEditor.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ActiproSoftware.WinUICore.Net20">
+      <HintPath>..\Library\ActiproSoftware.WinUICore.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="FISCA">
+      <HintPath>..\Library\FISCA.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Data">
+      <HintPath>..\Library\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Presentation">
+      <HintPath>..\Library\FISCA.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.UDT">
+      <HintPath>..\Library\FISCA.UDT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmartSchool.ErrorReporting">
+      <HintPath>..\Library\SmartSchool.ErrorReporting.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChangeListener\ChangeEventArgs.cs" />
+    <Compile Include="ChangeListener\ChangeListener.cs" />
+    <Compile Include="ChangeListener\ChangeSource.cs" />
+    <Compile Include="ChangeListener\CheckBoxSource.cs" />
+    <Compile Include="ChangeListener\CheckBoxXSource.cs" />
+    <Compile Include="ChangeListener\ComboBoxSource.cs" />
+    <Compile Include="ChangeListener\DataGridViewSource.cs" />
+    <Compile Include="ChangeListener\IChangeSource.cs" />
+    <Compile Include="ChangeListener\NumericUpDownSource.cs" />
+    <Compile Include="ChangeListener\RadioButtonSource.cs" />
+    <Compile Include="ChangeListener\TextBoxSource.cs" />
+    <Compile Include="ConfigurationForm\CampusConfiguration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationForm\CampusConfiguration.designer.cs">
+      <DependentUpon>CampusConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationForm\ConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurationForm\ConfigurationForm.designer.cs">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationForm\ConfigurationItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationForm\ConfigurationItem.designer.cs">
+      <DependentUpon>ConfigurationItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationForm\NotUsed\ConfigurationManager.cs" />
+    <Compile Include="ConfigurationForm\IConfigurationItem.cs" />
+    <Compile Include="ConfigurationForm\NotUsed\IConfigurationManager.cs" />
+    <Compile Include="ConfigurationForm\Interface\IConfigurationDataAccess.cs" />
+    <Compile Include="ConfigurationForm\Interface\IContentEditor.cs" />
+    <Compile Include="ConfigurationForm\Interface\IContentViewer.cs" />
+    <Compile Include="ConfigurationForm\Interface\ICommand.cs" />
+    <Compile Include="MsgBox.cs" />
+    <Compile Include="ConfigurationForm\NameCreatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurationForm\NameCreatorForm.designer.cs">
+      <DependentUpon>NameCreatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationForm\NotUsed\SystemConfiguration.cs" />
+    <Compile Include="TextViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextViewer.designer.cs">
+      <DependentUpon>TextViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlockMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlockMessage.Designer.cs">
+      <DependentUpon>BlockMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationForm\winConfiguration.cs" />
+    <Compile Include="XTextViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XTextViewer.Designer.cs">
+      <DependentUpon>XTextViewer.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConfigurationForm\CampusConfiguration.resx">
+      <DependentUpon>CampusConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationForm\ConfigurationForm.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationForm\ConfigurationItem.resx">
+      <DependentUpon>ConfigurationItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationForm\NameCreatorForm.resx">
+      <DependentUpon>NameCreatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextViewer.resx">
+      <DependentUpon>TextViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlockMessage.resx">
+      <DependentUpon>BlockMessage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XTextViewer.resx">
+      <DependentUpon>XTextViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

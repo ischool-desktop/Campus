@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 社團名稱可空白,但是同一學年度學期不可有兩筆同名稱之社團。主鍵驗證-->
+<!-- 高雄轉檔,分數及文字描述可不匯入 by dylan-->
+<!-- 努力程度需要在對照表內-->
+<!-- 文字描述若是數字出現警告 by kunhsiang-->
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="學號">
+			<Validate AutoCorrect="False" Description="「學號」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學號」長度必須小於12個文字。" ErrorType="Error" Validator="文字12" When=""/>
+		</Field>
+		<Field Required="False" Name="班級">
+		<Field Required="False" Name="座號">
+		<Field Required="False" Name="姓名">
+		<Field Required="True" Name="學年度">
+			<Validate AutoCorrect="False" Description="「學年度」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學年度」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="True" Name="學期">
+			<Validate AutoCorrect="False" Description="「學期」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學期」只允許「1、2」。" ErrorType="Error" Validator="學期列舉" When=""/>
+		</Field>
+		<Field Required="True" Name="社團名稱"></Field>
+		<Field Required="True" Name="分數" EmptyAlsoValidate="False"></Field>
+		<Field Required="True" Name="努力程度"></Field>
+		<Field Required="True" Name="文字描述"></Field>
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>0</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="文字12" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>12</MaxLength>
+		</FieldValidator>
+		<FieldValidator Name="學期列舉" Type="Enumeration">
+			<Item Value="1"/>
+			<Item Value="2"/>
+		</FieldValidator>
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>

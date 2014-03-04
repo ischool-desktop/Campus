@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 獎勵懲戒的欄位定義-->
+<!-- ((大功+小功+獎勵)>0 XOR (大過+小過+警告)>0) -->
+<!-- 主鍵驗證：學號+日期+事由 不能重覆-->
+<!-- 主鍵驗證：學號+日期+大功+小功+嘉獎+大過+小過+警告 不能重覆-->
+<!-- 是否銷過、銷過日期、銷過事由需要檢查是懲戒時才能有值 -->
+<!-- 銷過日期及銷過事由要當是否銷過為『是』時才能有值-->
+<ValidateRule>
+	<!-- 主鍵驗證
+	<DuplicateDetection>
+	    <Detector Name="PrimaryKey1">
+	        <Field Name="學號"/>
+	        <Field Name="日期"/>
+	        <Field Name="事由"/>
+	    </Detector>
+	    <Detector Name="PrimaryKey2">
+	        <Field Name="學號"/>
+	        <Field Name="日期"/>
+	        <Field Name="大功"/>
+			<Field Name="小功"/>
+			<Field Name="嘉獎"/>
+			<Field Name="大過"/>
+			<Field Name="小過"/>
+			<Field Name="警告"/>
+	    </Detector>
+	</DuplicateDetection> -->
+	<FieldList>
+		<Field Required="True" Name="學號">
+			<Validate AutoCorrect="False" Description="「學號」不允許空白。 " ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學號」長度必須小於12個文字。" ErrorType="Error" Validator="文字12" When=""/>
+		</Field>
+		<Field Required="False" Name="班級"/>
+		<Field Required="False" Name="座號"/>
+		<Field Required="False" Name="姓名"/>
+		<Field Required="True" Name="學年度">
+			<Validate AutoCorrect="False" Description="「學年度」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學年度」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="True" Name="學期">
+			<Validate AutoCorrect="False" Description="「學期」不允許空白。" ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學期」只允許「1、2」。" ErrorType="Error" Validator="學期列舉" When=""/>
+		</Field>
+		<Field Required="True" Name="日期">			
+			<Validate AutoCorrect="True" Description="「日期」格式不正確，建議使用西元「年/月/日」例如「2012/12/21」。" ErrorType="Error" Validator="合法日期" When=""/>
+		</Field>
+		<Field Required="True" Name="大功">
+			<Validate AutoCorrect="False" Description="「大功」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>			
+		<Field Required="True" Name="小功">
+			<Validate AutoCorrect="False" Description="「小功」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="True" Name="嘉獎">
+			<Validate AutoCorrect="False" Description="「嘉獎」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="True" Name="大過">
+			<Validate AutoCorrect="False" Description="「大過」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>	
+		</Field>
+		<Field Required="True" Name="小過">
+			<Validate AutoCorrect="False" Description="「小過」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="True" Name="警告">
+			<Validate AutoCorrect="False" Description="「警告」必須是數字。" ErrorType="Error" Validator="Integer極限" When=""/>		
+		</Field>
+		<Field Required="True" Name="事由">
+		</Field>
+		<Field Required="True" Name="是否銷過" EmptyAlsoValidate="False"><!--EmptyAlsoValidate 空白不檢查 -->
+			<Validate AutoCorrect="False" Description="「是否銷過」必須為空白或填入「是」。" ErrorType="Error" Validator="銷過列舉" When=""/>
+		</Field>
+		<Field Required="True" Name="銷過日期">
+			<Validate AutoCorrect="True" Description="「銷過日期」格式不正確，建議使用西元「年/月/日」例如「2012/12/21」。" ErrorType="Error" Validator="合法日期" When=""/>
+		</Field>
+		<Field Required="True" Name="銷過事由"></Field>
+		<Field Required="True" Name="登錄日期">
+			<Validate AutoCorrect="True" Description="「登錄日期」格式不正確，建議使用西元「年/月/日」例如「2012/12/21」。" ErrorType="Error" Validator="合法日期" When=""/>
+		</Field>
+	</FieldList>
+	<!-- 驗證規則 -->
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>0</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="Integer1-5" Type="Integer">
+			<MinValue>1</MinValue>
+			<MaxValue>5</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="文字12" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>12</MaxLength>
+		</FieldValidator>
+		<FieldValidator Name="學期列舉" Type="Enumeration">
+			<Item Value="1"/>
+			<Item Value="2"/>
+		</FieldValidator>
+		<FieldValidator Name="銷過列舉" Type="Enumeration">
+			<Item Value="是"/>
+		</FieldValidator>		
+		<FieldValidator Name="合法日期" Type="MixDate">
+		    <!-- Gregorian | Taiwan-->
+		    <!-- Pattern 中需要 Year,Month,Day 三個 Group。-->
+		    <!-- 2007/8/8 (年/月/日) -->
+		    <ValidPattern DateType="Gregorian">
+		        <![CDATA[^(?<Year>[0-9]{4})/(?<Month>[0-9]{1,2})/(?<Day>[0-9]{1,2})$]]>
+		    </ValidPattern>
+		    <Matchs CorrectTo="yyyy/MM/dd">
+		        <!-- 96/8/8 (年/月/日)-->
+		        <Match DateType="Taiwan"><![CDATA[^(?<Year>1?[0-9]{2})/(?<Month>[0-9]{1,2})/(?<Day>[0-9]{1,2})$]]></Match>
+		        <!-- 96-8-8 (年-月-日)-->
+		        <Match DateType="Taiwan"><![CDATA[^(?<Year>1?[0-9]{2})-(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})$]]></Match>
+		        <!-- 960808 (年月日)-->
+		        <Match DateType="Taiwan"><![CDATA[^(?<Year>1?[0-9]{2})(?<Month>[0-9]{2})(?<Day>[0-9]{2})$]]></Match>
+		        <!-- 2007-8-8 (年/月/日)-->
+		        <Match DateType="Gregorian"><![CDATA[^(?<Year>[0-9]{4})-(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})$]]></Match>
+		        <!-- 8-8-2007 (月/日/年)-->
+		        <Match DateType="Gregorian"><![CDATA[^(?<Month>[0-9]{1,2})-(?<Day>[0-9]{1,2})-(?<Year>[0-9]{4})$]]></Match>
+		        <!-- 20070812 (年月日)-->
+		        <Match DateType="Gregorian"><![CDATA[^(?<Year>[0-9]{4})(?<Month>[0-9]{2})(?<Day>[0-9]{2})$]]></Match>
+		    </Matchs>
+		</FieldValidator>
+		<!-- RowValidator -->
+		<RowValidator Name="合理的獎懲紀錄" Type="FALSE"/>
+	</ValidatorList>
+	<RowValidate>
+		<Validate AutoCorrect="False" Description="在紀錄中只能包含獎勵或懲戒，無法同時存在或同時不存在。" ErrorType="Error" Validator="合理的獎懲紀錄" When="至少一個"/>
+		<Validate AutoCorrect="False" Description="獎勵記錄不應該包含「是否銷過、銷過日期、銷過事由」。" ErrorType="Error" Validator="合理的獎勵紀錄" When="是否為獎勵"/>
+	</RowValidate>
+	<ConditionList>
+		<Condition Name="至少一個">
+			<Not>
+				<Xor>
+					<Or>
+						<Evaluate Evaluator="StaticInteger" Field="大功" Operator=">" Value="0"/>
+						<Evaluate Evaluator="StaticInteger" Field="小功" Operator=">" Value="0"/>
+						<Evaluate Evaluator="StaticInteger" Field="嘉獎" Operator=">" Value="0"/>
+					</Or>
+					<Or>
+						<Evaluate Evaluator="StaticInteger" Field="大過" Operator=">" Value="0"/>
+						<Evaluate Evaluator="StaticInteger" Field="小過" Operator=">" Value="0"/>
+						<Evaluate Evaluator="StaticInteger" Field="警告" Operator=">" Value="0"/>
+					</Or>
+				</Xor>
+			</Not>
+		</Condition>
+		<Condition Name="是否為獎勵">
+			<And>
+				<Or>
+					<Evaluate Evaluator="StaticInteger" Field="大功" Operator=">" Value="0"/>
+					<Evaluate Evaluator="StaticInteger" Field="小功" Operator=">" Value="0"/>
+					<Evaluate Evaluator="StaticInteger" Field="嘉獎" Operator=">" Value="0"/>
+				</Or>
+				<Evaluate Evaluator="StaticInteger" Field="大過" Operator="=" Value="0"/>
+				<Evaluate Evaluator="StaticInteger" Field="小過" Operator="=" Value="0"/>
+				<Evaluate Evaluator="StaticInteger" Field="警告" Operator="=" Value="0"/>
+				<Or>
+					<Evaluate Evaluator="StaticString" Field="銷過日期" Operator="!=" Value=""/>
+					<Evaluate Evaluator="StaticString" Field="是否銷過" Operator="!=" Value=""/>
+					<Evaluate Evaluator="StaticString" Field="銷過事由" Operator="!=" Value=""/>
+				</Or>
+			</And>
+		</Condition>
+	</ConditionList>
+</ValidateRule>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 主鍵驗證規則還沒寫 -->
+<!-- 文字描述建議不可為純數字(正規表示法)-->
+<ValidateRule>
+	<FieldList>
+		<Field Required="True" Name="學號">
+			<Validate AutoCorrect="False" Description="「學號」不允許空白。 " ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學號」長度必須小於12個文字。" ErrorType="Error" Validator="文字12" When=""/>
+		</Field>
+		<Field Required="False" Name="班級"/>
+		<Field Required="False" Name="座號"/>
+		<Field Required="False" Name="姓名"/>
+		<Field Required="True" Name="學年度">
+			<Validate AutoCorrect="False" Description="「學年度」不允許空白。 " ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學年度」必須是數字。 " ErrorType="Error" Validator="Integer極限" When=""/>
+		</Field>
+		<Field Required="True" Name="學期">
+			<Validate AutoCorrect="False" Description="「學期」不允許空白。 " ErrorType="Error" Validator="不可空白" When=""/>
+			<Validate AutoCorrect="False" Description="「學期」只允許「1、2」。 " ErrorType="Error" Validator="學期列舉" When=""/>
+		</Field>
+		<Field Required="True" Name="領域">
+			<Validate AutoCorrect="False" Description="「領域」不允許空白。 " ErrorType="Error" Validator="不可空白" When=""/>
+		</Field>
+		<Field Required="True" Name="權數">
+			<Validate AutoCorrect="False" Description="「權數」必須為數字(可包含小數點)。" ErrorType="Error" Validator="Decimal極限" When=""/>
+		</Field>
+		<Field Required="True" Name="節數">
+			<Validate AutoCorrect="False" Description="「節數」必須為數字(可包含小數點)。" ErrorType="Error" Validator="Decimal極限" When=""/>
+		</Field>
+		<Field Required="True" Name="分數評量" EmptyAlsoValidate="False">
+			<Validate AutoCorrect="False" Description="「分數評量」必須為數字(可包含小數點)。" ErrorType="Error" Validator="Decimal極限" When=""/>
+			<Validate AutoCorrect="False" Description="「分數評量」建議數字介於「0~100」。 " ErrorType="Warning" Validator="Decimal0-100" When=""/>
+		</Field>
+		<Field Required="True" Name="努力程度" EmptyAlsoValidate="False">
+			<Validate AutoCorrect="False" Description="「努力程度」必須為數字。" ErrorType="Error" Validator="Integer極限" When=""/>
+			<Validate AutoCorrect="False" Description="「努力程度」建議數字介於「1~5」。 " ErrorType="Warning" Validator="Integer1-5" When=""/>
+		</Field>
+		<Field Required="True" Name="文字描述" EmptyAlsoValidate="False">
+		</Field>
+		<Field Required="True" Name="註記" EmptyAlsoValidate="False">
+		</Field>
+	</FieldList>
+	<ValidatorList>
+		<FieldValidator Name="不可空白" Type="STRINGLENGTH">
+			<MinLength>1</MinLength>
+		</FieldValidator>
+		<FieldValidator Name="Integer極限" Type="Integer">
+			<MinValue>1</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="Integer1-5" Type="Integer">
+			<MinValue>1</MinValue>
+			<MaxValue>5</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="文字12" Type="STRINGLENGTH">
+			<MinLength>0</MinLength>
+			<MaxLength>12</MaxLength>
+		</FieldValidator>
+		<FieldValidator Name="學期列舉" Type="Enumeration">
+			<Item Value="1"/>
+			<Item Value="2"/>
+		</FieldValidator>
+		<FieldValidator Name="Decimal極限" Type="DECIMAL">
+			<MinValue>0</MinValue>
+			<MaxValue>2000000000</MaxValue>
+		</FieldValidator>
+		<FieldValidator Name="Decimal0-100" Type="DECIMAL">
+			<MinValue>0</MinValue>
+			<MaxValue>100</MaxValue>
+		</FieldValidator>
+	</ValidatorList>
+	<RowValidate/>
+	<ConditionList/>
+</ValidateRule>
