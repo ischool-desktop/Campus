@@ -19,7 +19,7 @@ namespace Campus.ePaper
             System.IO.MemoryStream ms_pdf = new System.IO.MemoryStream(Properties.Resources.Aspose_Total_201402);
             lic_pdf.SetLicense(ms_pdf);
 
-            Aspose.Pdf.License lic_excel = new Aspose.Pdf.License();
+            Aspose.Cells.License lic_excel = new Aspose.Cells.License();
             System.IO.MemoryStream ms_excel = new System.IO.MemoryStream(Properties.Resources.Aspose_Total_201402);
             lic_excel.SetLicense(ms_excel);
 
