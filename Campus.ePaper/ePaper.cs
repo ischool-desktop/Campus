@@ -136,13 +136,13 @@ namespace Campus.ePaper
 
                 if (Prefix == PrefixStudent.學號)
                 {
-                    Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where student_number in ('{0}')", string.Join("','", NumberList)));
+                     Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where student.student_number in ('{0}') and student.status in ('1','2','4','8')", string.Join("','", NumberList)));
 
                     DataTable dt = _Query.Select(Sq.ToString());
                     foreach (DataRow row in dt.Rows)
                     {
                         StudR r = GetStudR(row);
-                        if (!CheckDic.ContainsKey(r.StudentID))
+                        if (!CheckDic.ContainsKey(r.Student_Number))
                         {
                             CheckDic.Add(r.Student_Number, r);
                         }
@@ -150,13 +150,13 @@ namespace Campus.ePaper
                 }
                 else if (Prefix == PrefixStudent.身分證號)
                 {
-                    Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where id_number in ('{0}')", string.Join("','", NumberList)));
+                     Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where student.id_number in ('{0}') and student.status in ('1','2','4','8')", string.Join("','", NumberList)));
 
                     DataTable dt = _Query.Select(Sq.ToString());
                     foreach (DataRow row in dt.Rows)
                     {
                         StudR r = GetStudR(row);
-                        if (!CheckDic.ContainsKey(r.StudentID))
+                        if (!CheckDic.ContainsKey(r.Id_Number))
                         {
                             CheckDic.Add(r.Id_Number, r);
                         }
@@ -164,7 +164,7 @@ namespace Campus.ePaper
                 }
                 else
                 {
-                    Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where id in ('{0}')", string.Join("','", NumberList)));
+                     Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where student.id in ('{0}') and student.status in ('1','2','4','8')", string.Join("','", NumberList)));
 
                     DataTable dt = _Query.Select(Sq.ToString());
                     foreach (DataRow row in dt.Rows)
