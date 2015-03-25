@@ -88,8 +88,7 @@ namespace Campus.ePaper
 
             //取得切割後的檔案 & 基本資料內容
             SectionList = new List<StudentDocRecord>();
-            try
-            {
+
                 int successCount = 0; //用於計算進度。
 
                 foreach (Document each in _DocList)
@@ -101,14 +100,6 @@ namespace Campus.ePaper
                     decimal seed = (decimal)successCount / _DocList.Count();
                     BGW.ReportProgress((int)(seed * 100));
                 }
-            }
-            catch (Exception ex)
-            {
-                SmartSchool.ErrorReporting.ReportingService.ReportException(ex);
-                MsgBox.Show("檔案過多造成記憶體不足!!作業已中止!!\n" + ex.Message);
-
-                e.Cancel = true;
-            }
 
             //檢查學號是否存在系統內
             SectionList = ePaper.CheckDocument(SectionList, _pf);
@@ -121,23 +112,24 @@ namespace Campus.ePaper
 
         void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Text = "分析完成,請確認上傳「" + _DocName + "」";
-            labelX3.Text = "共「" + SectionList.Count + "」筆電子報表";
             if (!e.Cancelled)
             {
                 if (e.Error == null)
                 {
+                    this.Text = "分析完成,請確認上傳「" + _DocName + "」";
+                    labelX3.Text = "共「" + SectionList.Count + "」筆電子報表";
                     //畫面更新
                     BindData();
                 }
                 else
                 {
-                    MsgBox.Show("資料分析發生錯誤!!\n" + e.Error.Message);
+                    MsgBox.Show("分析發生錯誤!!\n" + e.Error.Message);
                     this.DialogResult = System.Windows.Forms.DialogResult.No;
                 }
             }
             else
             {
+                MsgBox.Show("作業已中止!");
                 this.DialogResult = System.Windows.Forms.DialogResult.No;
             }
         }
