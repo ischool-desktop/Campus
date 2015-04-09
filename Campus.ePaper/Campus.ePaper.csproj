@@ -124,6 +124,7 @@
     <Compile Include="StudentDocRecord.cs" />
     <Compile Include="StudR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tool.cs" />
     <Compile Include="Update_ePaper.cs">
       <SubType>Form</SubType>
     </Compile>

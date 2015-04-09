@@ -33,7 +33,6 @@ namespace Campus.ePaper
         public static List<StudentDocRecord> EatDocument(Document doc, PrefixStudent Prefix)
         {
             List<StudentDocRecord> SectionList = new List<StudentDocRecord>();
-
             int count = 1;
             foreach (Section each in doc.Sections)
             {
@@ -60,14 +59,9 @@ namespace Campus.ePaper
         /// <returns></returns>
         private static StudentDocRecord SetSections(Section OnePage, string PrefixName, string NowStatus)
         {
-            Document idoc = new Document();
-            idoc.Sections.Clear();
-            Node n = idoc.ImportNode(OnePage, true);
-            idoc.Sections.Add(n);
-
             StudentDocRecord record = new StudentDocRecord();
             record.PrefixName = PrefixName;
-            record.Doc = idoc;
+            record.Doc = OnePage;
             record.Status = NowStatus;
             return record;
         }

@@ -16,7 +16,7 @@ namespace Campus.ePaper
         /// <summary>
         /// 文件
         /// </summary>
-        public Document Doc { get; set; }
+        public Section Doc { get; set; }
 
         /// <summary>
         /// 學生姓名

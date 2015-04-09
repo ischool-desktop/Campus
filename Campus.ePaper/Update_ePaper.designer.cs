@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,14 +63,14 @@
             this.colSeatNo,
             this.colStudentID,
             this.colStatus});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewX1.Name = "dataGridViewX1";
@@ -121,7 +121,7 @@
             this.btnUpdate.AutoSize = true;
             this.btnUpdate.BackColor = System.Drawing.Color.Transparent;
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUpdate.Location = new System.Drawing.Point(377, 399);
+            this.btnUpdate.Location = new System.Drawing.Point(377, 433);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 25);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -136,7 +136,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(458, 399);
+            this.btnExit.Location = new System.Drawing.Point(458, 433);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -222,12 +222,12 @@
             // 
             this.linkSaveFile.AutoSize = true;
             this.linkSaveFile.BackColor = System.Drawing.Color.Transparent;
-            this.linkSaveFile.Location = new System.Drawing.Point(12, 406);
+            this.linkSaveFile.Location = new System.Drawing.Point(12, 405);
             this.linkSaveFile.Name = "linkSaveFile";
             this.linkSaveFile.Size = new System.Drawing.Size(60, 17);
             this.linkSaveFile.TabIndex = 7;
             this.linkSaveFile.TabStop = true;
-            this.linkSaveFile.Text = "另存新檔";
+            this.linkSaveFile.Text = "單檔儲存";
             this.linkSaveFile.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSaveFile_LinkClicked);
             // 
             // labelX3
@@ -239,11 +239,11 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(105, 403);
+            this.labelX3.Location = new System.Drawing.Point(12, 437);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(114, 21);
+            this.labelX3.Size = new System.Drawing.Size(320, 21);
             this.labelX3.TabIndex = 8;
-            this.labelX3.Text = "共「」筆電子報表";
+            this.labelX3.Text = "共「」筆電子報表(本功能每300張分為一個批次上傳)";
             // 
             // cbWordChangePDF
             // 
@@ -265,7 +265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 431);
+            this.ClientSize = new System.Drawing.Size(545, 467);
             this.Controls.Add(this.cbWordChangePDF);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.linkSaveFile);
@@ -279,6 +279,7 @@
             this.DoubleBuffered = true;
             this.Name = "Update_ePaper";
             this.Text = "報表分析與上傳";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Update_ePaper_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSchoolYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.intSemester)).EndInit();
