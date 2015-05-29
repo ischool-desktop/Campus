@@ -18,6 +18,7 @@ namespace Campus.Message
         /// </summary>
         private System.ComponentModel.Container components = null;
         private FlowLayoutPanel flowLayoutPanel1;
+        private DevComponents.DotNetBar.LabelX txtMessageCount;
 
         /// <summary>
         /// 計數器
@@ -48,6 +49,8 @@ namespace Campus.Message
             //
             InitializeComponent();
 
+            flowLayoutPanel1.ControlAdded += flowLayoutPanel1_ControlAdded;
+
             if (CustList.Count > 0)
             {
                 timer.Enabled = true;
@@ -73,11 +76,17 @@ namespace Campus.Message
             }
         }
 
+        void flowLayoutPanel1_ControlAdded(object sender, ControlEventArgs e)
+        {
+            txtMessageCount.Text = string.Format("共{0}則訊息", flowLayoutPanel1.Controls.Count);
+        }
+
         /// <summary>
         /// 加入一個新訊息
         /// </summary>
         public void AddMessage(CustomRecord cr)
         {
+
             List<UserControl1> list = new List<UserControl1>();
             foreach (UserControl1 each in flowLayoutPanel1.Controls)
             {
@@ -101,6 +110,7 @@ namespace Campus.Message
         /// <param name="CloseTimeOut"></param>
         public void ShowMessage(int CloseTimeOut)
         {
+
             timer_End = this.AutoCloseTimeOut = CloseTimeOut; //畫面關閉時間
             this.timer.Start();
             IsShow = true;
@@ -171,6 +181,7 @@ namespace Campus.Message
         {
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtMessageCount = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
             // labelX1
@@ -198,6 +209,23 @@ namespace Campus.Message
             this.flowLayoutPanel1.Size = new System.Drawing.Size(374, 126);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
+            // txtMessageCount
+            // 
+            this.txtMessageCount.AutoSize = true;
+            this.txtMessageCount.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.txtMessageCount.BackgroundStyle.Class = "";
+            this.txtMessageCount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtMessageCount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMessageCount.ForeColor = System.Drawing.Color.Red;
+            this.txtMessageCount.Location = new System.Drawing.Point(244, 12);
+            this.txtMessageCount.Name = "txtMessageCount";
+            this.txtMessageCount.Size = new System.Drawing.Size(84, 26);
+            this.txtMessageCount.TabIndex = 3;
+            this.txtMessageCount.Text = "共0則訊息";
+            // 
             // AlertCustom
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 15);
@@ -205,6 +233,7 @@ namespace Campus.Message
             this.BackColor2 = System.Drawing.Color.White;
             this.CaptionFont = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.ClientSize = new System.Drawing.Size(394, 180);
+            this.Controls.Add(this.txtMessageCount);
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(114)))), ((int)(((byte)(196)))));
@@ -220,5 +249,6 @@ namespace Campus.Message
         }
 
         #endregion
+
     }
 }
