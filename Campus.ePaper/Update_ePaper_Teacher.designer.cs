@@ -55,6 +55,9 @@
             this.dataGridViewX1.AllowUserToAddRows = false;
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.AllowUserToResizeRows = false;
+            this.dataGridViewX1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -77,16 +80,17 @@
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(521, 350);
+            this.dataGridViewX1.Size = new System.Drawing.Size(640, 348);
             this.dataGridViewX1.TabIndex = 0;
             // 
             // btnUpdate
             // 
             this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.AutoSize = true;
             this.btnUpdate.BackColor = System.Drawing.Color.Transparent;
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUpdate.Location = new System.Drawing.Point(377, 433);
+            this.btnUpdate.Location = new System.Drawing.Point(486, 431);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 25);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -98,10 +102,11 @@
             // btnExit
             // 
             this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(458, 433);
+            this.btnExit.Location = new System.Drawing.Point(567, 431);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -185,9 +190,10 @@
             // 
             // linkSaveFile
             // 
+            this.linkSaveFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkSaveFile.AutoSize = true;
             this.linkSaveFile.BackColor = System.Drawing.Color.Transparent;
-            this.linkSaveFile.Location = new System.Drawing.Point(12, 405);
+            this.linkSaveFile.Location = new System.Drawing.Point(12, 403);
             this.linkSaveFile.Name = "linkSaveFile";
             this.linkSaveFile.Size = new System.Drawing.Size(60, 17);
             this.linkSaveFile.TabIndex = 7;
@@ -197,6 +203,7 @@
             // 
             // labelX3
             // 
+            this.labelX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelX3.AutoSize = true;
             this.labelX3.BackColor = System.Drawing.Color.Transparent;
             // 
@@ -204,7 +211,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(12, 437);
+            this.labelX3.Location = new System.Drawing.Point(12, 435);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(320, 21);
             this.labelX3.TabIndex = 8;
@@ -228,6 +235,7 @@
             // 
             // colStudentNumber
             // 
+            this.colStudentNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colStudentNumber.DataPropertyName = "PrefixName";
             this.colStudentNumber.HeaderText = "比對名稱";
             this.colStudentNumber.Name = "colStudentNumber";
@@ -249,6 +257,7 @@
             // 
             // colTeacherNickName
             // 
+            this.colTeacherNickName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colTeacherNickName.DataPropertyName = "TeacherNickName";
             this.colTeacherNickName.HeaderText = "暱稱";
             this.colTeacherNickName.Name = "colTeacherNickName";
@@ -260,12 +269,13 @@
             this.colStatus.HeaderText = "狀態";
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
+            this.colStatus.Width = 188;
             // 
             // Update_ePaper_Teacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 467);
+            this.ClientSize = new System.Drawing.Size(673, 465);
             this.Controls.Add(this.cbWordChangePDF);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.linkSaveFile);

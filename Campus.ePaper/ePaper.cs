@@ -297,6 +297,8 @@ namespace Campus.ePaper
             return r;
         }
 
+        //2018/3/29 穎驊註解，看來下面這兩個方法Update、UpdateDocument是以前留下來沒有用到的廢code 施工痕跡
+
         /// <summary>
         /// 依據檔案內容之標記
         /// 傳送至
@@ -358,24 +360,21 @@ namespace Campus.ePaper
                 Dictionary<string, TeacherR> CheckDic = new Dictionary<string, TeacherR>();
 
                 if (Prefix == PrefixTeacher.教師姓名_暱稱)
-                {
-                    //Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where student.student_number in ('{0}') and student.status in ('1','2','4','8')", string.Join("','", NumberList)));
-                    Sq.Append(string.Format("select teacher.id,teacher.id_number,teacher.teacher_name,teacher.nickname,class.class_name from class left outer join teacher on ref_teacher_id=teacher.id where teacher.id_number in ('{0}') and teacher.status in ('1','2','4','8')", string.Join("','", NumberList)));
+                {                    
+                    Sq.Append(string.Format("select a1.* from (select teacher.id,teacher.id_number,teacher.teacher_name,teacher.teacher_name ||'_'|| teacher.nickname AS key,teacher.nickname,teacher.status,class.class_name from class left outer join teacher on ref_teacher_id=teacher.id ) AS a1 where a1.status in ('1','2','4','8') and key in('{0}') ", string.Join("','", NumberList)));
 
                     DataTable dt = _Query.Select(Sq.ToString());
                     foreach (DataRow row in dt.Rows)
                     {
                         TeacherR r = GetTeacherR(row);
-                        //if (!CheckDic.ContainsKey(r.Student_Number))
-                        //{
-                        //    CheckDic.Add(r.Student_Number, r);
-                        //}
+                        if (!CheckDic.ContainsKey(r.Teacher_Name+'_'+r.Teacher_NickName))
+                        {
+                            CheckDic.Add(r.Teacher_Name + '_' + r.Teacher_NickName, r);
+                        }
                     }
                 }
                 else if (Prefix == PrefixTeacher.身分證號)
-                {
-                    //Sq.Append(string.Format("select student.id,student.student_number,student.id_number,student.name,class.class_name,student.seat_no from student left join class on ref_class_id=class.id where student.id_number in ('{0}') and student.status in ('1','2','4','8')", string.Join("','", NumberList)));
-                    
+                {                                       
                     Sq.Append(string.Format("select teacher.id,teacher.id_number,teacher.teacher_name,teacher.nickname,class.class_name from class left outer join teacher on ref_teacher_id=teacher.id where teacher.id_number in ('{0}') and teacher.status in ('1','2','4','8')", string.Join("','", NumberList)));
 
                     DataTable dt = _Query.Select(Sq.ToString());
