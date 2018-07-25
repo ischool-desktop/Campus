@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using FISCA.Presentation.Controls;
+using Aspose.IO;
 
 namespace Campus.Report
 {
@@ -16,6 +17,8 @@ namespace Campus.Report
         /// <param name="filename">儲存的檔案名稱</param>
         public static void SaveDocument(Aspose.Words.Document document, string filename)
         {
+            
+
             string path = CreatePath(filename, ".doc");
 
             try
@@ -55,10 +58,16 @@ namespace Campus.Report
 
                 document.Save(XmlFileName, Aspose.Words.SaveFormat.AsposePdf);
 
-                Aspose.Pdf.Pdf pdf = new Aspose.Pdf.Pdf();
+                //Aspose.Pdf.Pdf pdf = new Aspose.Pdf.Pdf();
 
-                pdf.BindXML(XmlFileName, null);
-                pdf.Save(PDFFileName);
+                //pdf.BindXML(XmlFileName, null);
+                //pdf.Save(PDFFileName);
+
+                MemoryStream dstStream = new MemoryStream();
+                document.Save(dstStream, Aspose.Words.SaveFormat.Docx);
+
+                Aspose.IO.Tools.SavePDFtoLocal(dstStream, PDFFileName);
+
 
                 if (File.Exists(path))
                     File.Delete(Path.Combine(fi.DirectoryName, fi.Name));
@@ -67,6 +76,58 @@ namespace Campus.Report
                 folder.Delete(true);
 
                 OpenFile(path, fi.Name);
+            }
+        }
+
+
+        /// <summary>
+        /// 批次儲存 Word 報表(不會儲存後開啟檔案)。
+        /// </summary>
+        /// <param name="document">要儲存的報表物件</param>
+        /// <param name="filename">儲存的檔案名稱</param>
+        /// <param name="outputType">輸出檔案格式</param>
+        public static void SaveDocumentBatch(Aspose.Words.Document document, string filename, OutputType outputType)
+        {
+            if (outputType == OutputType.Word)
+            {
+                string path = CreatePath(filename, ".doc");
+                document.Save(path);
+            }                
+            else if (outputType == OutputType.PDF)
+            {
+                string path = CreatePath(filename, ".pdf");
+
+                FileInfo fi = new FileInfo(path);
+
+                DirectoryInfo folder = new DirectoryInfo(Path.Combine(fi.DirectoryName, Path.GetRandomFileName()));
+                if (!folder.Exists) folder.Create();
+
+                FileInfo fileinfo = new FileInfo(Path.Combine(folder.FullName, fi.Name));
+
+                string XmlFileName = fileinfo.FullName.Substring(0, fileinfo.FullName.Length - fileinfo.Extension.Length) + ".xml";
+                string PDFFileName = fileinfo.FullName.Substring(0, fileinfo.FullName.Length - fileinfo.Extension.Length) + ".pdf";
+
+                document.Save(XmlFileName, Aspose.Words.SaveFormat.AsposePdf);
+
+                //Aspose.Pdf.Pdf pdf = new Aspose.Pdf.Pdf();
+
+                //pdf.BindXML(XmlFileName, null);
+                //pdf.Save(PDFFileName);
+
+                MemoryStream dstStream = new MemoryStream();
+                document.Save(dstStream, Aspose.Words.SaveFormat.Docx);
+
+                Aspose.IO.Tools.SavePDFtoLocal(dstStream, PDFFileName);
+
+
+                if (File.Exists(path))
+                    File.Delete(Path.Combine(fi.DirectoryName, fi.Name));
+
+                File.Move(PDFFileName, path);
+                folder.Delete(true);
+
+                // 因為是批次儲存 不再開啟檔案
+                //OpenFile(path, fi.Name);
             }
         }
 

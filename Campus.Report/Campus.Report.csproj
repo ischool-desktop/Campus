@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Campus.Report</RootNamespace>
     <AssemblyName>Campus.Report</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -36,6 +36,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,12 +60,36 @@
   <ItemGroup>
     <Reference Include="Aspose.Cells">
       <HintPath>..\Library\Aspose.Cells.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Aspose.IO">
+      <HintPath>Library\Aspose.IO.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.Pdf">
-      <HintPath>..\Library\Aspose.Pdf.dll</HintPath>
+      <HintPath>Library\Aspose.Pdf.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.Words">
-      <HintPath>..\Library\Aspose.Words.dll</HintPath>
+      <HintPath>Library\Aspose.Words.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\DevComponents.DotNetBar2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Authentication">
+      <HintPath>Library\FISCA.Authentication.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Presentation">
+      <HintPath>Library\FISCA.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.Data">
+      <HintPath>Library\K12.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -84,14 +109,15 @@
     <Compile Include="TemplateSettingControl.Designer.cs">
       <DependentUpon>TemplateSettingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="TemplateSettingForm.cs" />
+    <Compile Include="TemplateSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TemplateSettingForm.Designer.cs">
       <DependentUpon>TemplateSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TemplateType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="TemplateSettingControl.resx">
       <DependentUpon>TemplateSettingControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -117,6 +143,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Library\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
