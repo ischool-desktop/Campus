@@ -159,6 +159,12 @@ namespace Campus.Report
                 return null;
             }
         }
+
+        public Stream GetStream()
+        {
+            return this.Stream;
+        }
+
         #endregion
     }
 }
